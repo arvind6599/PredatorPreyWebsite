@@ -1,6 +1,6 @@
-# Nerfies
+# Hunting for Insights: Investigating Complex Predator-Prey Dynamics through Simulated Vision and Reinforcement Learning.
 
-This is the repository that contains source code for the [Hunting for Insights website](https://nerfies.github.io).
+This is the repository that contains source code for the [Hunting for Insights website](https://arvind6599.github.io/PredatorPreyWebsite/).
 
 
 # Website License
