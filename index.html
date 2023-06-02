@@ -602,13 +602,17 @@
               upon collision. Conversely, the prey lacks this collider as its primary goal involves evading the predator.
           </p>
           <br>
-          <div align="center" class="box">
-            <img src="static/images/agent-box-colliders.jpeg" alt="Box colliders for the agents">
-            <h5 class="subtitle has-text-centered">
-              <font size="-0.7">
-                <span style="font-weight:normal">Box colliders for the predator and prey agents</span>
-              </font>
-            </h5>
+          <div class="columns is-centered">
+            <div class="column is-three-fifths">
+              <div align="center" class="box">
+                <img src="static/images/agent-box-colliders.jpeg" alt="Box colliders for the agents">
+                <h5 class="subtitle has-text-centered">
+                  <font size="-0.7">
+                    <span style="font-weight:normal">Box colliders for the predator and prey agents</span>
+                  </font>
+                </h5>
+              </div>
+            </div>
           </div>
 
           <br>
@@ -634,7 +638,7 @@
             Consequently, we exclude depth information for any rays falling outside this region by
             assigning a distance of \(-1\). Using this modified Ray Perception sensor, we define two distinct sensor types:
             <em>predator-style</em> and <em>prey-style</em>, which draw inspiration from the characteristic vision traits observed in real-world
-            predators and prey, respectively.
+            predators and prey <a href="https://books.google.ch/books?id=uXSK6hDKFC0C&oi=fnd&pg=PP1&dq=animal+eyes+&ots=dLMn7ufvNI&sig=Aedtf7xH87s3c9gMFKzPWSvj1Ms&redir_esc=y#v=onepage&q=animal%20eyes&f=false">[16]</a>, respectively.
           </p>
           <br>
           <div align="center" class="box">
@@ -709,14 +713,20 @@
             to address these difficulties. The diagram below provides a high-level overview of this approach.
           </p>
           <br>
-          <div align="center" class="box">
-            <img src="static/images/self-play.jpeg" alt="Self play">
-            <h5 class="subtitle has-text-centered">
-              <font size="-0.7">
-                <span style="font-weight:normal">Diagram showing the self-play mechanism</span>
-              </font>
-            </h5>
+          <div class="columns is-centered">
+            <div class="column is-four-fifths">
+              <div align="center" class="box">
+                <img src="static/images/self-play.jpeg" alt="Self play">
+                <h5 class="subtitle has-text-centered">
+                  <font size="-0.7">
+                    <span style="font-weight:normal">Diagram showing the self-play mechanism</span>
+                  </font>
+                </h5>
+              </div>
+            </div>
           </div>
+
+
 
           <br>
 
@@ -766,9 +776,21 @@
                   Behavioural and vision params. rotation and movement speeds and specific params of sensors.
                 </p>
 
-                <div class="box">
-                  <img src="static/images/configs_table.png" alt="Vision sensor configurations">
+                <div class="columns is-centered">
+                  <div class="column is-two-fifths">
+                    <div class="box">
+                      <img src="static/images/configs_table.png" alt="Vision sensor configurations">
+                      <h5 class="subtitle has-text-centered">
+                        <font size="-0.7">
+                          <span style="font-weight:normal">
+                            The combinations of vision sensors used for the agents in the experiments.
+                        </span>
+                        </font>
+                      </h5>
+                    </div>
+                  </div>
                 </div>
+
 
           </div>
         </div>
@@ -812,6 +834,13 @@
                   </tbody>
               </table>
           </div>
+          <div align="center">
+          <font size="-0.7">
+            <span style="font-weight:normal">
+              Parameters of the prey and predator-style vision sensors
+          </span>
+          </font>
+          </div>
         </div>
 
 
@@ -822,8 +851,8 @@
             <p>
               The agents are trained on all environments mentioned in the methodology section in parallel. By having environments of different difficulties,
               a speed-up in training can be observed, similar as in curriculum learning <a href="https://dl.acm.org/doi/abs/10.1145/1553374.1553380?casa_token=nh2ZrojaWoAAAAAA:ch-UtBUm-jXdt36EJoGrONsdXTfKYTOF9g3wpMqUjykIzeeCv2_d4p2hoGlyuJRGTlWCdZyWmPVmmg">[13]</a>,
-              <a href="https://dl.acm.org/doi/abs/10.5555/3455716.3455897">[14]</a>. Furthermore, multiple agents of each type were present
-              in each environment. Although this could make the environment unstable, it greatly enhances training speed.
+              <a href="https://dl.acm.org/doi/abs/10.5555/3455716.3455897">[14]</a>. Furthermore, three agents of each type were present
+              in each environment. Although this could make the environment unstable due to partial observability, it greatly enhances training speed.
             </p>
             <p>
               The predator and prey were each trained self-play for \(9 \cdot 10^6\) steps, where one step corresponds to
@@ -834,10 +863,14 @@
               PPO with the Adam <a href="https://arxiv.org/abs/1412.6980">[15]</a> optimizer with a learning of \(0.0003\) and no decay. Finally, the buffer sizes of both
               agents are set to \(40960\).
             </p>
-            
+
             <h3 class="title is-5">Inference environments</h3>
             <p>
-              \lars{We should write on why we chose to use these.}
+              For testing the agents we design new out of distribution environments with varying levels of complexity. The control
+              environment, like in training, consists of an empty environment. Additional environments include similar obstacles and
+              hiding spots in different configurations, introducing more blind spots for the prey to utilize for protection. We also
+              incorporate a complex "hide and seek" environment that encourages the agents to showcase
+              interesting behaviors and interactions. The inference environments are shown below.
             </p>
 
           </div>
@@ -1010,23 +1043,115 @@
       <div class="column is-full-width">
         <h2 class="title is-3" id="conclusion">V. Conclusions and Limitations</h2>
 
+        <div class="content has-text-justified">
+          <p>With this work, we have developed a new way to investigate the role of vision in simulated predator-prey
+            interactions. Through our experiments where we vary the vision fields of predator and prey agents and train
+            them against each other using reinforcement learning, we are able to make the following overarching observations:</p>
+          <ul>
+              <li>Depth information seems to be crucial for predators. Even for prey, depth can act as an important cue but
+                to a lesser extent.</li>
+              <li>Wide field of view is crucial to prey. Whereas predators mainly need to look in the direction in which they
+                are moving at most times, prey needs both to see where they're going while also being able to sense predators in
+                their periphery to evade them.</li>
+              <li>Memory plays an important role in complementing visual perception in predator-prey interactions.</li>
+          </ul>
+          <p>These observations support our current understanding of why real-world predators and prey developed vision systems
+            that prioritized depth perception and field of view, respectively.</p>
+
+        </div>
+
         <!-- Limitations. -->
-        <h3 class="title is-4">V-I. Limitations</h3>
+        <h3 class="title is-4">V-I. Limitations and Future Work</h3>
         <div class="content has-text-justified">
           <p>
-            Limitations
+            Whilst we observe many interesting behaviors and were able to obtain promising initial results, it's important
+            to note there are many limitations to our approach. Real-life predator prey interactions are incredibly complex,
+            and it's almost impossible to capture all these complexities in a simple simulated environment such as this. The most
+            pertinent limitations and potential future work are as follows:
           </p>
+          <ul>
+            <li>
+              The predator and prey agents exhibited seemingly untrained or random behaviour at times, indicating that the agents
+              needed to be trained further. For comparison, in OpenAI's hide and seek environment it took ~2.7 million <em>episodes</em> for
+              the seekers to learn to consistently chase the hiders, and they even used a curriculum learning approach to help facilitate
+              learning. Meanwhile our training ran for only ~10 million steps in total (~corresponds to an order of magnitude \(10^4\)
+              episodes). Whilst training at OpenAI's scale is of course not feasible, the agents would likely have benefited greatly
+              from further training or an alternative strategy such as curriculum learning.
+            </li>
+          </ul>
+
+          <!-- TODO: INSERT VIDEO OF RANDOM BEHAVIOUR HERE-->
+
+          <ul>
+            <li>
+              As we observed, memory is crucial to complement vision in predator-prey scenarios, however our agents
+              had virtually no memory. Not only would the agents forget about an object as soon as it fell out of its
+              field of view, but since they didn't have any positional information they also couldn't plan a smarter
+              trajectory knowing where they'd been and what they'd seen (e.g. to avoid backing into a wall and not going
+              anywhere). To address this, we could increase the observation stack to give the agents more memory, and
+              potentially include past positional information as an additional observation. We could also try experimenting
+              with a recurrent neural network instead of a vanilla multi-layer perceptron to better model the temporal information.
+            </li>
+          </ul>
+
+          <!-- TODO: INSERT VIDEO OF NO MEMORY HERE -->
+
+          <ul>
+            <li>
+              Depth perception seems to play an important role for both predators and prey, but our simplified sensor
+              assumes no depth perception outside of the binocular region which isn't strictly true. There are various
+              monocular depth cues as well (as shown in the figure below) that both predators and prey in reality could
+              make use of in their periphery. Thus, adding noisy depth estimates rather than no depth information in the
+              monocular regions could help improve learning.
+            </li>
+          </ul>
+
+          <div class="columns is-centered">
+            <div class="column is-half">
+              <div align="center" class="box">
+                <img src="static/images/monocular-visual-cues.jpg" alt="https://jackwestin.com/resources/mcat-content/perception/perceptual-organization">
+                <h5 class="subtitle has-text-centered">
+                  <font size="-0.7">
+                    <span style="font-weight:normal">Examples of depth cues available from monocular vision</span>
+                  </font>
+                </h5>
+              </div>
+            </div>
+          </div>
+
+
+          <ul>
+            <li>
+              Another major simplification we made is in terms of the action space of the agents. Our agents can only move
+              backward/forwards or rotate, however, there are many more degrees of freedom for real-life predators and prey,
+              some of which could prove very advantageous in such scenarios. For example, in reality, it would be possible for
+              an agent to turn its head to see in a different direction from where it's moving. Having this additional degree of
+              freedom coupled with memory could allow the prey with predator vision to look backward, gauge where the predator is,
+              and then look forward again to run away — similar to how we as humans (who have predator-style vision) might behave
+              when being chased.
+            </li>
+          </ul>
+
+          <p>
+            Furthermore, in this initial work, we only investigate a discrete set of vision fields, however a similar
+            setup could also be used to instead optimise the vision fields for each agent's goal of evading/hunting
+            given some physical constraints.
+          </p>
+
         </div>
         <br/>
-        <!--/ Limitations. -->
+        <!--/ Limitations and future work-->
 
-        <!-- Future work. -->
-        <h3 class="title is-4">V-II. Future work</h3>
-        <div class="content has-text-justified">
-          <p>
-            Future work
-          </p>
-        </div>
+      </div>
+    </div>
+    <!--/ Conclusions and limitations. -->
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
 
         <h3 class="title is-3">Become the Predator</h3>
         <div align="center">
@@ -1038,11 +1163,9 @@
           always be optimal, but if you play a few times you can start to observe some interesting behaviours.</em></font>
         </h6>
         <br>
-        <!--/ Future work. -->
 
       </div>
     </div>
-    <!--/ Conclusions and limitations. -->
   </div>
 </section>
 
@@ -1194,53 +1317,54 @@
         <h2 class="title is-3">References</h2>
 
         <div class="content has-text-justified">
-          <ol>
+          <ol class="references">
               <li>
-                  <p>Park J, Lee J, Kim T, Ahn I, Park J. Co-Evolution of Predator-Prey Ecosystems by Reinforcement Learning Agents. Entropy.
-                    2021; 23(4):461. <a href="https://doi.org/10.3390/e23040461">https://doi.org/10.3390/e23040461</a></p>
+                Park J, Lee J, Kim T, Ahn I, Park J. Co-Evolution of Predator-Prey Ecosystems by Reinforcement Learning Agents. Entropy. 2021; 23(4):461. <a href="https://doi.org/10.3390/e23040461">https://doi.org/10.3390/e23040461</a>.
               </li>
               <li>
-                  <p>Baker, B., Kanitscheider, I., Markov, T., Wu, Y., Powell, G., McGrew, B., & Mordatch, I. (2019).
-                    Emergent tool use from multi-agent autocurricula. arXiv preprint <a href="https://arxiv.org/abs/1909.07528">arXiv:1909.07528</a>.</p>
+                Baker, B., Kanitscheider, I., Markov, T., Wu, Y., Powell, G., McGrew, B., & Mordatch, I. (2019). Emergent tool use from multi-agent autocurricula. arXiv preprint <a href="https://arxiv.org/abs/1909.07528">arXiv:1909.07528</a>.
               </li>
               <li>
-                  <p>Haas, J. K. (2014). A history of the unity game engine.</p>
+                Haas, J. K. (2014). A history of the unity game engine.
               </li>
               <li>
-                  <p>Juliani, A., Berges, V. P., Teng, E., Cohen, A., Harper, J., Elion, C., ... & Lange, D. (2018). Unity: A general platform for intelligent agents. arXiv preprint <a href="https://arxiv.org/abs/1809.02627">arXiv:1809.02627</a>.</p>
+                Juliani, A., Berges, V. P., Teng, E., Cohen, A., Harper, J., Elion, C., ... & Lange, D. (2018). Unity: A general platform for intelligent agents. arXiv preprint <a href="https://arxiv.org/abs/1809.02627">arXiv:1809.02627</a>.
               </li>
               <li>
-                <p>Brockman, G., Cheung, V., Pettersson, L., Schneider, J., Schulman, J., Tang, J., & Zaremba, W. (2016). Openai gym. ArXiv Preprint <a href="https://arxiv.org/abs/1809.02627">ArXiv:1606.01540</a>.</p>
-              </li>
-              <li>Başar, T., & Olsder, G. J. (1998). Dynamic noncooperative game theory. Society for Industrial and Applied Mathematics.
-                <p>Tsai, Dorian, Timothy L. Molloy, and Tristan Perez. "Inverse two-player zero-sum dynamic games." 2016 Australian Control Conference (AuCC). IEEE, 2016.</p>
+                Brockman, G., Cheung, V., Pettersson, L., Schneider, J., Schulman, J., Tang, J., & Zaremba, W. (2016). Openai gym. ArXiv Preprint <a href="https://arxiv.org/abs/1809.02627">ArXiv:1606.01540</a>.
               </li>
               <li>
-                <p>Başar, T., & Olsder, G. J. (1998). Dynamic noncooperative game theory. Society for Industrial and Applied Mathematics.</p>
+                Tsai, Dorian, Timothy L. Molloy, and Tristan Perez. "Inverse two-player zero-sum dynamic games." 2016 Australian Control Conference (AuCC). IEEE, 2016.
               </li>
               <li>
-                <p>Buşoniu, L., Babuška, R., & De Schutter, B. (2010). Multi-agent reinforcement learning: An overview. Innovations in multi-agent systems and applications-1, 183-221.</p>
+                Başar, T., & Olsder, G. J. (1998). Dynamic noncooperative game theory. Society for Industrial and Applied Mathematics.
               </li>
               <li>
-                <p>Shoham, Y., Powers, R., & Grenager, T. (2003). Multi-agent reinforcement learning: a critical survey (Vol. 288). Technical report, Stanford University.</p>
+                Buşoniu, L., Babuška, R., & De Schutter, B. (2010). Multi-agent reinforcement learning: An overview. Innovations in multi-agent systems and applications-1, 183-221.
               </li>
               <li>
-                <p>Bai, Y., Jin, C., & Yu, T. (2020). Near-optimal reinforcement learning with self-play. Advances in neural information processing systems, 33, 2159-2170.</p>
+                Shoham, Y., Powers, R., & Grenager, T. (2003). Multi-agent reinforcement learning: a critical survey (Vol. 288). Technical report, Stanford University.
               </li>
               <li>
-                <p>Silver, D., Hubert, T., Schrittwieser, J., Antonoglou, I., Lai, M., Guez, A., ... & Hassabis, D. (2018). A general reinforcement learning algorithm that masters chess, shogi, and Go through self-play. Science, 362(6419), 1140-1144.</p>
+                Bai, Y., Jin, C., & Yu, T. (2020). Near-optimal reinforcement learning with self-play. Advances in neural information processing systems, 33, 2159-2170.
               </li>
               <li>
-                <p>Schrittwieser, J., Antonoglou, I., Hubert, T., Simonyan, K., Sifre, L., Schmitt, S., ... & Silver, D. (2020). Mastering atari, go, chess and shogi by planning with a learned model. Nature, 588(7839), 604-609.</p>
+                Silver, D., Hubert, T., Schrittwieser, J., Antonoglou, I., Lai, M., Guez, A., ... & Hassabis, D. (2018). A general reinforcement learning algorithm that masters chess, shogi, and Go through self-play. Science, 362(6419), 1140-1144.
               </li>
               <li>
-                <p>Bengio, Y., Louradour, J., Collobert, R., & Weston, J. (2009, June). Curriculum learning. In Proceedings of the 26th annual international conference on machine learning (pp. 41-48).</p>
+                Schrittwieser, J., Antonoglou, I., Hubert, T., Simonyan, K., Sifre, L., Schmitt, S., ... & Silver, D. (2020). Mastering atari, go, chess and shogi by planning with a learned model. Nature, 588(7839), 604-609.
               </li>
               <li>
-                <p>Narvekar, S., Peng, B., Leonetti, M., Sinapov, J., Taylor, M. E., & Stone, P. (2020). Curriculum learning for reinforcement learning domains: A framework and survey. The Journal of Machine Learning Research, 21(1), 7382-7431.</p>
+                Bengio, Y., Louradour, J., Collobert, R., & Weston, J. (2009, June). Curriculum learning. In Proceedings of the 26th annual international conference on machine learning (pp. 41-48).
               </li>
               <li>
-                <p>Kingma, D. P., & Ba, J. (2014). Adam: A method for stochastic optimization. ArXiv Preprint <a href="https://arxiv.org/abs/1412.6980">arXiv:1412.6980</a></p>
+                Narvekar, S., Peng, B., Leonetti, M., Sinapov, J., Taylor, M. E., & Stone, P. (2020). Curriculum learning for reinforcement learning domains: A framework and survey. The Journal of Machine Learning Research, 21(1), 7382-7431.
+              </li>
+              <li>
+                Kingma, D. P., & Ba, J. (2014). Adam: A method for stochastic optimization. ArXiv Preprint <a href="https://arxiv.org/abs/1412.6980">arXiv:1412.6980</a></p>
+              </li>
+              <li>
+                Land, M. F., & Nilsson, D. E. (2012). Animal eyes. OUP Oxford.
               </li>
               <!-- Add more references as needed -->
           </ol>
