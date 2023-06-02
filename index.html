@@ -1037,7 +1037,7 @@
               <!-- <h2 class="title is-2 has-text-centered">Model and Behavior Parameters</h2> -->
                 <h3 class="title is-5">Inference results</h3>
                 <p>
-                  Inference results
+                
                 </p>
                 <div class="box">
                   <iframe src="./static/figures/median_time_survived.html" frameborder="0" width="100%" height="500px"></iframe>
@@ -1046,7 +1046,11 @@
                 <br>
                 <h3 class="title is-6">Normal vision</h3>
                 <p>
-                  Overall description of performance in normal vision case
+                  This configuration as expected is the closest
+                  to the real-world complex interactions, featuring prey
+                  running away from the predator without looking at it,
+                  i.e. does not primarily depend on the depth rays to
+                  detect and react to predators’ movements
                 </p>
 
             </div>
@@ -1069,35 +1073,42 @@
       <div id="results-carousel" class="carousel results-carousel">
         <div class="item item-steve">
           <video poster="" id="steve" controls playsinline height="100%">
-            <source src="./static/videos/steve.mp4"
+            <source src="./static/videos/Normal/Trees1.mp4"
                     type="video/mp4">
           </video>
           <h2 class="subtitle has-text-centered">
-            <span class="dnerf">Nerfies</span> turns selfie videos from your phone into
-            free-viewpoint
-            portraits.
+            Prey evading the predator using the trees
           </h2>
         </div>
         <div class="item item-chair-tp">
           <video poster="" id="chair-tp" controls playsinline height="100%">
-            <source src="./static/videos/chair-tp.mp4"
+            <source src="./static/videos/Normal/hiding.mp4"
                     type="video/mp4">
           </video>
+          <h2 class="subtitle has-text-centered">
+            Prey hiding behind the rock unseen by the predator
+          </h2>
+        </br>
         </div>
         <div class="item item-shiba">
           <video poster="" id="shiba" controls playsinline height="100%">
-            <source src="./static/videos/shiba.mp4"
+            <source src="./static/videos/Normal/prey-bivsmonovison-behaviour-control.mp4"
                     type="video/mp4">
           </video>
+          <h2 class="subtitle has-text-centered">
+            Different reactions for when the prey is in the binocular and monocular FOV of the predator
+          </h2>
         </div>
         <div class="item item-fullbody">
           <video poster="" id="fullbody" controls playsinline height="100%">
-            <source src="./static/videos/fullbody.mp4"
+            <source src="./static/videos/Normal/zig-zag.mp4"
                     type="video/mp4">
           </video>
-        </div>
-
-          </video>
+          <h2 class="subtitle has-text-centered">
+            Prey exhibitsing zig-zag movement when the predator is behind
+          </h2>
+            </video>
+          </div>
         </div>
       </div>
     </div>
@@ -1115,9 +1126,14 @@
         <!-- Include median_time_survived.html using an iframe -->
         <div class="content has-text-justified">
           <div class="content has-text-justified">
-            <h3 class="title is-6">Predator both</h3>
+            <h3 class="title is-6">Both predator</h3>
             <p>
-              Overall description of performance in predator both case
+              This configuration features more
+              activated agents that are encouraged to move around
+              a lot more. In this setting, the binocular field of view
+              is very important and both agents primarily keep each
+              other within the binocular field of view for the purpose
+              of tracking and evasion
             </p>
           </div>
         </div>
@@ -1133,35 +1149,36 @@
       <div id="results-carousel" class="carousel results-carousel">
         <div class="item item-steve">
           <video poster="" id="steve" controls playsinline height="100%">
-            <source src="./static/videos/steve.mp4"
+            <source src="./static/videos/PredatorBoth/Control.mp4"
                     type="video/mp4">
           </video>
           <h2 class="subtitle has-text-centered">
-            <span class="dnerf">Nerfies</span> turns selfie videos from your phone into
-            free-viewpoint
-            portraits.
+            Prey failed to learn to effectively evade predator
           </h2>
         </div>
         <div class="item item-chair-tp">
           <video poster="" id="chair-tp" controls playsinline height="100%">
-            <source src="./static/videos/chair-tp.mp4"
+            <source src="./static/videos/PredatorBoth/trees.mp4"
                     type="video/mp4">
           </video>
+          <h2 class="subtitle has-text-centered">
+            Prey cannot react to predator approaching from behind (blind spot)
+          </h2>
+        </br>
         </div>
         <div class="item item-shiba">
-          <video poster="" id="shiba" controls playsinline height="100%">
-            <source src="./static/videos/shiba.mp4"
+          <video poster="" id="chair-tp" controls playsinline height="100%">
+            <source src="./static/videos/PredatorBoth/not_trained_enough.mp4"
                     type="video/mp4">
           </video>
+          <h2 class="subtitle has-text-centered">
+            Prey movement indicating that further training is required
+          </h2>
         </div>
-        <div class="item item-fullbody">
-          <video poster="" id="fullbody" controls playsinline height="100%">
-            <source src="./static/videos/fullbody.mp4"
-                    type="video/mp4">
-          </video>
+        <div class="item item-chair-tp">
         </div>
-
-          </video>
+            </video>
+          </div>
         </div>
       </div>
     </div>
@@ -1179,9 +1196,22 @@
         <!-- Include median_time_survived.html using an iframe -->
         <div class="content has-text-justified">
           <div class="content has-text-justified">
-            <h3 class="title is-6">Prey both</h3>
+            <h3 class="title is-6">Both prey</h3>
             <p>
-              Overall description of performance in prey both case
+              In this configuration both the prey
+              and predator agents are trained on the prey vision,
+              which is mostly consisting of monocular vision. As
+              seen in the figure, the median time survived is the
+              highest for this configuration. This can be due to the
+              fact that prey vision is not suitable for the predator,
+              thus making it weaker and less effective. It can also
+              be due to the fact that the prey benefits from learning
+              to detect the predator with monocular vision and does
+              not have to look at it while evading it, thus having
+              increased awareness in terms of avoiding obstacles
+              present within the environment. Complex environments
+              such as Trees and Hide have a larger difference in
+              median time survived as compared to others
             </p>
           </div>
         </div>
@@ -1197,34 +1227,34 @@
       <div id="results-carousel" class="carousel results-carousel">
         <div class="item item-steve">
           <video poster="" id="steve" controls playsinline height="100%">
-            <source src="./static/videos/steve.mp4"
+            <source src="./static/videos/PreyBoth/Control.mp4"
                     type="video/mp4">
           </video>
           <h2 class="subtitle has-text-centered">
-            <span class="dnerf">Nerfies</span> turns selfie videos from your phone into
-            free-viewpoint
-            portraits.
+            Prey both performing well in the control environment
           </h2>
         </div>
         <div class="item item-chair-tp">
           <video poster="" id="chair-tp" controls playsinline height="100%">
-            <source src="./static/videos/chair-tp.mp4"
+            <source src="./static/videos/PreyBoth/rotation.mp4"
                     type="video/mp4">
           </video>
+          <h2 class="subtitle has-text-centered">
+            Rotational behaviour preferred by agent when the adversary is in the monocular FOV
+          </h2>
+        </br>
         </div>
         <div class="item item-shiba">
           <video poster="" id="shiba" controls playsinline height="100%">
-            <source src="./static/videos/shiba.mp4"
+            <source src="./static/videos/PreyBoth/Trees.mp4"
                     type="video/mp4">
           </video>
+          <h2 class="subtitle has-text-centered">
+            Prey exhibiting evasive maneuvers
+          </h2>
         </div>
         <div class="item item-fullbody">
-          <video poster="" id="fullbody" controls playsinline height="100%">
-            <source src="./static/videos/fullbody.mp4"
-                    type="video/mp4">
-          </video>
         </div>
-
           </video>
         </div>
       </div>
@@ -1245,7 +1275,20 @@
           <div class="content has-text-justified">
             <h3 class="title is-6">Swapped vision</h3>
             <p>
-              Overall description of performance in swapped vision case
+              As observed in Figure (Ar: ADD FIGURE),
+              swapped configuration has low median values for the
+              time survived in all environments except control. In
+              this configuration, after having trained using predator
+              vision, the prey has learned to keep the predator in
+              its depth field of view while trying to run away from
+              it. This strategy has the limitation that it is unable
+              to detect obstacles effectively thus either backing up
+              into certain nearby obstacles unknowingly or even
+              backing up into corners making it a sitting duck for the
+              predator to attack. This is less of an issue in the control
+              environment since it does not contain any obstacles and
+              thus demonstrating a higher median time survived by
+              the prey
             </p>
           </div>
         </div>
@@ -1261,32 +1304,41 @@
       <div id="results-carousel" class="carousel results-carousel">
         <div class="item item-steve">
           <video poster="" id="steve" controls playsinline height="100%">
-            <source src="./static/videos/steve.mp4"
+            <source src="./static/videos/Swapped/Trees.mp4"
                     type="video/mp4">
           </video>
           <h2 class="subtitle has-text-centered">
-            <span class="dnerf">Nerfies</span> turns selfie videos from your phone into
-            free-viewpoint
-            portraits.
+            Prey learns to evade by keep predator in the depth FOV
+          </h2>
+        </div>
+
+        <div class="item item-shiba">
+          <video poster="" id="shiba" controls playsinline height="100%">
+            <source src="./static/videos/Swapped/backing-into-corner.mp4"
+                    type="video/mp4">
+          </video>
+          <h2 class="subtitle has-text-centered">
+            Prey backs up into a corner trying to evade the predator
+          </h2>
+        </br>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" controls playsinline height="100%">
+            <source src="./static/videos/Swapped/Control-lasts-longer.mp4"
+                    type="video/mp4">
+          </video>
+          <h2 class="subtitle has-text-centered">
+            Prey surviving longer in the control environment due to lack of obstacles
           </h2>
         </div>
         <div class="item item-chair-tp">
           <video poster="" id="chair-tp" controls playsinline height="100%">
-            <source src="./static/videos/chair-tp.mp4"
+            <source src="./static/videos/Swapped/backing-into-wall.mp4"
                     type="video/mp4">
           </video>
-        </div>
-        <div class="item item-shiba">
-          <video poster="" id="shiba" controls playsinline height="100%">
-            <source src="./static/videos/shiba.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-fullbody">
-          <video poster="" id="fullbody" controls playsinline height="100%">
-            <source src="./static/videos/fullbody.mp4"
-                    type="video/mp4">
-          </video>
+          <h2 class="subtitle has-text-centered">
+            Prey backing up into the wall lacking memory and perception behind it
+          </h2>
         </div>
 
           </video>
