@@ -634,7 +634,7 @@
             Consequently, we exclude depth information for any rays falling outside this region by
             assigning a distance of \(-1\). Using this modified Ray Perception sensor, we define two distinct sensor types:
             <em>predator-style</em> and <em>prey-style</em>, which draw inspiration from the characteristic vision traits observed in real-world
-            predators and prey, respectively.
+            predators and prey <a href="https://books.google.ch/books?id=uXSK6hDKFC0C&oi=fnd&pg=PP1&dq=animal+eyes+&ots=dLMn7ufvNI&sig=Aedtf7xH87s3c9gMFKzPWSvj1Ms&redir_esc=y#v=onepage&q=animal%20eyes&f=false">[16]</a>, respectively.
           </p>
           <br>
           <div align="center" class="box">
@@ -834,7 +834,7 @@
               PPO with the Adam <a href="https://arxiv.org/abs/1412.6980">[15]</a> optimizer with a learning of \(0.0003\) and no decay. Finally, the buffer sizes of both
               agents are set to \(40960\).
             </p>
-            
+
             <h3 class="title is-5">Inference environments</h3>
             <p>
               \lars{We should write on why we chose to use these.}
@@ -1194,53 +1194,54 @@
         <h2 class="title is-3">References</h2>
 
         <div class="content has-text-justified">
-          <ol>
+          <ol class="references">
               <li>
-                  <p>Park J, Lee J, Kim T, Ahn I, Park J. Co-Evolution of Predator-Prey Ecosystems by Reinforcement Learning Agents. Entropy.
-                    2021; 23(4):461. <a href="https://doi.org/10.3390/e23040461">https://doi.org/10.3390/e23040461</a></p>
+                Park J, Lee J, Kim T, Ahn I, Park J. Co-Evolution of Predator-Prey Ecosystems by Reinforcement Learning Agents. Entropy. 2021; 23(4):461. <a href="https://doi.org/10.3390/e23040461">https://doi.org/10.3390/e23040461</a>.
               </li>
               <li>
-                  <p>Baker, B., Kanitscheider, I., Markov, T., Wu, Y., Powell, G., McGrew, B., & Mordatch, I. (2019).
-                    Emergent tool use from multi-agent autocurricula. arXiv preprint <a href="https://arxiv.org/abs/1909.07528">arXiv:1909.07528</a>.</p>
+                Baker, B., Kanitscheider, I., Markov, T., Wu, Y., Powell, G., McGrew, B., & Mordatch, I. (2019). Emergent tool use from multi-agent autocurricula. arXiv preprint <a href="https://arxiv.org/abs/1909.07528">arXiv:1909.07528</a>.
               </li>
               <li>
-                  <p>Haas, J. K. (2014). A history of the unity game engine.</p>
+                Haas, J. K. (2014). A history of the unity game engine.
               </li>
               <li>
-                  <p>Juliani, A., Berges, V. P., Teng, E., Cohen, A., Harper, J., Elion, C., ... & Lange, D. (2018). Unity: A general platform for intelligent agents. arXiv preprint <a href="https://arxiv.org/abs/1809.02627">arXiv:1809.02627</a>.</p>
+                Juliani, A., Berges, V. P., Teng, E., Cohen, A., Harper, J., Elion, C., ... & Lange, D. (2018). Unity: A general platform for intelligent agents. arXiv preprint <a href="https://arxiv.org/abs/1809.02627">arXiv:1809.02627</a>.
               </li>
               <li>
-                <p>Brockman, G., Cheung, V., Pettersson, L., Schneider, J., Schulman, J., Tang, J., & Zaremba, W. (2016). Openai gym. ArXiv Preprint <a href="https://arxiv.org/abs/1809.02627">ArXiv:1606.01540</a>.</p>
-              </li>
-              <li>Başar, T., & Olsder, G. J. (1998). Dynamic noncooperative game theory. Society for Industrial and Applied Mathematics.
-                <p>Tsai, Dorian, Timothy L. Molloy, and Tristan Perez. "Inverse two-player zero-sum dynamic games." 2016 Australian Control Conference (AuCC). IEEE, 2016.</p>
+                Brockman, G., Cheung, V., Pettersson, L., Schneider, J., Schulman, J., Tang, J., & Zaremba, W. (2016). Openai gym. ArXiv Preprint <a href="https://arxiv.org/abs/1809.02627">ArXiv:1606.01540</a>.
               </li>
               <li>
-                <p>Başar, T., & Olsder, G. J. (1998). Dynamic noncooperative game theory. Society for Industrial and Applied Mathematics.</p>
+                Tsai, Dorian, Timothy L. Molloy, and Tristan Perez. "Inverse two-player zero-sum dynamic games." 2016 Australian Control Conference (AuCC). IEEE, 2016.
               </li>
               <li>
-                <p>Buşoniu, L., Babuška, R., & De Schutter, B. (2010). Multi-agent reinforcement learning: An overview. Innovations in multi-agent systems and applications-1, 183-221.</p>
+                Başar, T., & Olsder, G. J. (1998). Dynamic noncooperative game theory. Society for Industrial and Applied Mathematics.
               </li>
               <li>
-                <p>Shoham, Y., Powers, R., & Grenager, T. (2003). Multi-agent reinforcement learning: a critical survey (Vol. 288). Technical report, Stanford University.</p>
+                Buşoniu, L., Babuška, R., & De Schutter, B. (2010). Multi-agent reinforcement learning: An overview. Innovations in multi-agent systems and applications-1, 183-221.
               </li>
               <li>
-                <p>Bai, Y., Jin, C., & Yu, T. (2020). Near-optimal reinforcement learning with self-play. Advances in neural information processing systems, 33, 2159-2170.</p>
+                Shoham, Y., Powers, R., & Grenager, T. (2003). Multi-agent reinforcement learning: a critical survey (Vol. 288). Technical report, Stanford University.
               </li>
               <li>
-                <p>Silver, D., Hubert, T., Schrittwieser, J., Antonoglou, I., Lai, M., Guez, A., ... & Hassabis, D. (2018). A general reinforcement learning algorithm that masters chess, shogi, and Go through self-play. Science, 362(6419), 1140-1144.</p>
+                Bai, Y., Jin, C., & Yu, T. (2020). Near-optimal reinforcement learning with self-play. Advances in neural information processing systems, 33, 2159-2170.
               </li>
               <li>
-                <p>Schrittwieser, J., Antonoglou, I., Hubert, T., Simonyan, K., Sifre, L., Schmitt, S., ... & Silver, D. (2020). Mastering atari, go, chess and shogi by planning with a learned model. Nature, 588(7839), 604-609.</p>
+                Silver, D., Hubert, T., Schrittwieser, J., Antonoglou, I., Lai, M., Guez, A., ... & Hassabis, D. (2018). A general reinforcement learning algorithm that masters chess, shogi, and Go through self-play. Science, 362(6419), 1140-1144.
               </li>
               <li>
-                <p>Bengio, Y., Louradour, J., Collobert, R., & Weston, J. (2009, June). Curriculum learning. In Proceedings of the 26th annual international conference on machine learning (pp. 41-48).</p>
+                Schrittwieser, J., Antonoglou, I., Hubert, T., Simonyan, K., Sifre, L., Schmitt, S., ... & Silver, D. (2020). Mastering atari, go, chess and shogi by planning with a learned model. Nature, 588(7839), 604-609.
               </li>
               <li>
-                <p>Narvekar, S., Peng, B., Leonetti, M., Sinapov, J., Taylor, M. E., & Stone, P. (2020). Curriculum learning for reinforcement learning domains: A framework and survey. The Journal of Machine Learning Research, 21(1), 7382-7431.</p>
+                Bengio, Y., Louradour, J., Collobert, R., & Weston, J. (2009, June). Curriculum learning. In Proceedings of the 26th annual international conference on machine learning (pp. 41-48).
               </li>
               <li>
-                <p>Kingma, D. P., & Ba, J. (2014). Adam: A method for stochastic optimization. ArXiv Preprint <a href="https://arxiv.org/abs/1412.6980">arXiv:1412.6980</a></p>
+                Narvekar, S., Peng, B., Leonetti, M., Sinapov, J., Taylor, M. E., & Stone, P. (2020). Curriculum learning for reinforcement learning domains: A framework and survey. The Journal of Machine Learning Research, 21(1), 7382-7431.
+              </li>
+              <li>
+                Kingma, D. P., & Ba, J. (2014). Adam: A method for stochastic optimization. ArXiv Preprint <a href="https://arxiv.org/abs/1412.6980">arXiv:1412.6980</a></p>
+              </li>
+              <li>
+                Land, M. F., & Nilsson, D. E. (2012). Animal eyes. OUP Oxford.
               </li>
               <!-- Add more references as needed -->
           </ol>

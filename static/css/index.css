@@ -2,6 +2,23 @@ body {
   font-family: 'Noto Sans', sans-serif;
 }
 
+ol.references {
+  counter-reset: item;
+  margin-left: 0;
+  padding-left: 0;
+}
+ol.references li {
+  display: block;
+  margin-bottom: .5em;
+  margin-left: 2em;
+}
+ol.references li::before {
+  display: inline-block;
+  content: "["counter(item)"] ";
+  counter-increment: item;
+  width: 3em;
+  margin-left: -3.5em;
+}
 
 .footer .icon-link {
     font-size: 25px;
