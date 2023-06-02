@@ -404,11 +404,46 @@
       <div class="column is-full-width">
         <h2 class="title is-3">Method</h2>
 
+        <p>
+          In this section, we present the methodology utilized for this paper. We first discuss the environment setup,
+          after which we detail how the predator and prey agents are created. Finally, we talk about how the agents are optimized.
+        </p>
+        <p>
+          We create a 3D environment using the Unity game development engine \lars{TODO CITATION}. The selection of Unity as the engine
+          for creating the environment instead of a different simulator is motivated by several key factors. Mainly, Unity's ML-Agents
+          package \lars{TODO CITATION} offers support for the OpenAI Gym framework \lars{TODO CITATION}, which is widely used in
+          reinforcement learning research. This way, Unity enables interaction between the environment and the learning algorithms,
+          allowing for efficient experimentation and evaluation of predator-prey agents.
+        </p>
+        <p>
+          Moreover, the engine offers a wide range of built-in tools, such as physics simulations, ray tracing, and collision.
+          Finally, Unity provides a user-friendly and intuitive development environment, making it accessible to researchers with
+           varying levels of expertise.
+        </p>
+        <br>
         <!-- Creating environments. -->
         <h3 class="title is-4">Environments</h3>
         <div class="content has-text-justified">
           <p>
-            Creating environments
+            We present a diverse set of simulated environments aimed at replicating various scenarios involving predator-prey interactions.
+            Our objective is to foster a wide range of hunting behaviors for predators while prey organisms strive to survive. To achieve
+            this diversity, we incorporate obstacles such as trees and rocks within the environments. Additionally, we introduce walls along
+            the boundaries to confine the agents to the designated training area. This confinement allows us to concentrate the agents' actions
+             and observations within a controlled environment.
+          </p>
+          <p>
+            Furthermore, we integrate physics-based simulations and collision detection mechanisms into the environment.
+            By assigning colliders to the predator and prey agent models, we ensure accurate detection of interactions with the
+            environment and other agents. Each object in the environment is assigned a corresponding tag, such as "obstacle",
+            "predator", or "prey", enabling efficient identification.
+          </p>
+          <p>
+            To speed up the learning process, we design the initial training environment \lars{(La: BETTER FIGURE)} to be free of
+            obstacles. This approach eliminates potential obstructions that could slow down training progress in the early stages.
+            Subsequently, we create three additional training environments \lars{(La: REFERENCE)} featuring distinct obstacle types:
+            small trees, large rocks, and a split doorway. These environments allow the agents to acquire the skills necessary for
+            navigating through increasingly complex situations involving obstacles, and should allow the prey agent to learn to exploit
+             occlusions.
           </p>
         </div>
         <!--/ Creating environments. -->
@@ -477,8 +512,14 @@
         <h3 class="title is-4">Predator and Prey Agents</h3>
         <div class="content has-text-justified">
           <p>
-            Agents
+            Whilst the prey and predator have opposing objectives, they demonstrate similar characteristics. Both agents operate
+            within a continuous action space with two degrees of freedom: rotation about the y-axis and forward/backward movement.
+            Each degree of freedom allows the agent to select a value between $[-1, 1]$, determining the direction and intensity of
+             movement. The agents' behavioral parameters consist of maximum movement and rotation speeds, which scale this intensity
+              value. Notably, the predator possesses an additional box collider located at its face, resulting in the prey's death
+              upon collision. Conversely, the prey lacks this collider as its primary goal involves evading the predator. \lars{Show figure}.
           </p>
+          <br>
           <div align="center">
             <img src="static/images/agent-box-colliders.jpeg" alt="Box colliders for the agents">
           </div>
@@ -487,6 +528,7 @@
               <span style="font-weight:normal">Box colliders for the predator and prey agents</span>
             </font>
           </h5>
+          <br>
         </div>
         <!--/ Creating agents. -->
 
@@ -494,8 +536,22 @@
         <h3 class="title is-5">Vision sensor</h3>
         <div class="content has-text-justified">
           <p>
-            Ray perception sensor
+            In order to simulate various vision fields, we employ a modified version of the ML-Agents Ray Perception sensor. This
+            sensor uses a collection of ray casts originating from a central point. Several parameters are available to manipulate
+             the vision, including ray angles (to establish the field of view), ray length (to determine the depth of field), number
+             of rays (to regulate ray density), and a list of tags for filtering detected objects. Each ray conveys the following
+             information: a flag indicating whether it collides with a tagged object, a one-hot encoded vector identifying the object
+              type, and the normalized distance to the hit object relative to the ray length. Consequently, the sensor's output
+              comprises a flattened vector encapsulating the information encoded within each ray.
           </p>
+          <p>
+            To control the region of binocular vision, we have extended this sensor to incorporate a parameter representing
+            the number of depth rays. Consequently, we exclude depth information for any rays falling outside this region by
+            assigning a distance of $-1$. By using this modified Ray Perception sensor, we define two distinct sensor types:
+            predator-style and prey-style, which draw inspiration from the characteristic vision traits observed in real-world
+            predators and prey, respectively.
+          </p>
+          <br>
           <div align="center">
             <img src="static/images/ray-perception-sensors.png" alt="Predator and prey-style ray perception sensors">
           </div>
@@ -504,6 +560,16 @@
               <span style="font-weight:normal">Predator- and prey-style ray perception sensors</span>
             </font>
           </h5>
+          <br>
+          <p>
+            Utilizing the modified Ray Perception sensor offers distinct advantages for this paper by providing precise
+             control over the simulated vision fields. Customizable parameters such as field of view and depth of field enable
+             alignment with the specific requirements of the prey and predator agents in the simulated environment. This level of
+             control ensures that the sensory input accurately reflects the desired characteristics of the vision of the agent.
+             Furthermore, using the modified Ray Perception sensor instead of raw camera inputs enhances training efficiency by
+             reducing the computational burden of processing high-dimensional image data.
+          </p>
+          <br>
         </div>
         <!--/ Vision sensor. -->
 
@@ -511,8 +577,41 @@
         <h3 class="title is-4">Setting up Reinforcement Learning Training</h3>
         <div class="content has-text-justified">
           <p>
-            Training
+            The setting of predator-prey dynamics can be framed as a two-player dynamic game \lars{(CITATION)}. This game-theoretic
+            formulation captures the interactions and influence of the agents on the state of the game, providing a framework
+            for studying predator-prey dynamics based on a common utility function. The game is only played for a set number of
+            steps, until it is terminated.
           </p>
+
+          <p>
+            In our formulation, the state and action spaces align with the descriptions provided in the previous sections,
+            allowing for a consistent representation of the game dynamics. The transitions between states are determined by
+            the underlying physics engine, ensuring a realistic simulation of the predator-prey environment.
+          </p>
+
+          <p>
+            The reward structure employed in our proposed framework, as illustrated in \lars{FIGURE}, incorporates a constant time
+            penalty applied to the predator at each time step, and a positive reward if a prey is caught. This deliberate design
+            choice serves to incentivize the predator to capture prey at the earliest opportunity. Conversely, the reward for the
+            prey is formulated in the opposite manner, establishing a zero-sum game. The range of rewards is bounded within the
+            interval $[-1, 1]$. This reward specification enables a natural distinction between favorable and unfavorable
+            outcomes of both agents.
+          </p>
+
+          <p>
+            Furthermore, since the predator-prey game exhibits an inherent asymmetry, it can be expressed as an asymmetric
+            zero-sum game. Unlike games such as soccer, where teams have shared objectives, the predator and prey agents
+            pursue conflicting goals. The asymmetry arises from the distinct policies used by the different agents, resulting
+            in strategic dynamics that differ from those observed in symmetric games.
+          </p>
+
+          <p>
+            Overall, the nature of the game poses additional challenges, as it suffers from many of the problems in
+            competitive multi-agent learning \lars{ADD CITATION}. Multi-agent reinforcement learning in competitive scenarios
+            poses several challenges \lars{(PAPER)}. This paper employs a prominent technique called "self-play"
+            \lars{(CITATION)} to address these difficulties. \lars{FIGURE} provides a high-level overview of this approach.
+          </p>
+          <br>
           <div align="center">
             <img src="static/images/self-play.jpeg" alt="Self play">
           </div>
@@ -521,6 +620,19 @@
               <span style="font-weight:normal">Diagram showing the self-play mechanism</span>
             </font>
           </h5>
+          <br>
+
+          <p>
+            Initially, either the predator or prey agent is trained, while the model of the other agent remains frozen. After
+            a predetermined number of iterations, the frozen model is trained, and the other agent's model is frozen.
+            However, a potential issue arises from the bias introduced by repeatedly playing against the most recent model.
+            This bias can lead to overfitting and poor generalization. To mitigate this problem, we incorporate an ELO ranking
+            system as done in MuZero \lars{CITATION}, enabling models to compete against earlier versions of their opponents.
+            By doing so, we reduce the impact of bias, leading to improved generalization and robustness in the learned policies.
+
+          </p>
+          <br>
+
         </div>
         <!--/ Training. -->
 
