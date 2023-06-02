@@ -414,9 +414,10 @@
           after which we detail how the predator and prey agents are created. Finally, we talk about how the agents are optimized.
         </p>
         <p>
-          We create a 3D environment using the Unity game development engine \lars{TODO CITATION}. The selection of Unity as the engine
+          We create a 3D environment using the Unity game development engine <a href="https://unity.com/">[3]</a>. The selection of Unity as the engine
           for creating the environment instead of a different simulator is motivated by several key factors. Mainly, Unity's ML-Agents
-          package \lars{TODO CITATION} offers support for the OpenAI Gym framework \lars{TODO CITATION}, which is widely used in
+          package <a href="https://arxiv.org/abs/1809.02627">[4]</a> offers support for the OpenAI Gym framework
+          <a href="https://arxiv.org/abs/1809.02627">[5]</a>, which is widely used in
           reinforcement learning research. This way, Unity enables interaction between the environment and the learning algorithms,
           allowing for efficient experimentation and evaluation of predator-prey agents.
         </p>
@@ -443,9 +444,9 @@
             "predator", or "prey", enabling efficient identification.
           </p>
           <p>
-            To speed up the learning process, we design the initial training environment \lars{(La: BETTER FIGURE)} to be free of
+            To speed up the learning process, we design the initial training environment ('Control' shown below) to be free of
             obstacles. This approach eliminates potential obstructions that could slow down training progress in the early stages.
-            Subsequently, we create three additional training environments \lars{(La: REFERENCE)} featuring distinct obstacle types:
+            Subsequently, we create three additional training environments ('Forest', 'Escape Room' and 'Rocky') featuring distinct obstacle types:
             small trees, large rocks, and a split doorway. These environments allow the agents to acquire the skills necessary for
             navigating through increasingly complex situations involving obstacles, and should allow the prey agent to learn to exploit
              occlusions.
@@ -519,10 +520,10 @@
           <p>
             Whilst the prey and predator have opposing objectives, they demonstrate similar characteristics. Both agents operate
             within a continuous action space with two degrees of freedom: rotation about the y-axis and forward/backward movement.
-            Each degree of freedom allows the agent to select a value between $[-1, 1]$, determining the direction and intensity of
+            Each degree of freedom allows the agent to select a value between [-1, 1], determining the direction and intensity of
              movement. The agents' behavioral parameters consist of maximum movement and rotation speeds, which scale this intensity
               value. Notably, the predator possesses an additional box collider located at its face, resulting in the prey's death
-              upon collision. Conversely, the prey lacks this collider as its primary goal involves evading the predator. \lars{Show figure}.
+              upon collision. Conversely, the prey lacks this collider as its primary goal involves evading the predator.
           </p>
           <br>
           <div align="center" class="box">
@@ -616,7 +617,7 @@
             Overall, the nature of the game poses additional challenges, as it suffers from many of the problems in
             competitive multi-agent learning \lars{ADD CITATION}. Multi-agent reinforcement learning in competitive scenarios
             poses several challenges \lars{(PAPER)}. This paper employs a prominent technique called "self-play"
-            \lars{(CITATION)} to address these difficulties. \lars{FIGURE} provides a high-level overview of this approach.
+            \lars{(CITATION)} to address these difficulties. The diagram below provides a high-level overview of this approach.
           </p>
           <br>
           <div align="center" class="box">
@@ -1036,7 +1037,13 @@
                     Emergent tool use from multi-agent autocurricula. arXiv preprint <a href="https://arxiv.org/abs/1909.07528">arXiv:1909.07528</a>.</p>
               </li>
               <li>
-                  <p>Author6, F. (Year). Title of the website or article. Retrieved from URL</p>
+                  <p>Haas, J. K. (2014). A history of the unity game engine.</p>
+              </li>
+              <li>
+                  <p>Juliani, A., Berges, V. P., Teng, E., Cohen, A., Harper, J., Elion, C., ... & Lange, D. (2018). Unity: A general platform for intelligent agents. arXiv preprint <a href="https://arxiv.org/abs/1809.02627">arXiv:1809.02627</a>.</p>
+              </li>
+              <li>
+                <p>Brockman, G., Cheung, V., Pettersson, L., Schneider, J., Schulman, J., Tang, J., & Zaremba, W. (2016). Openai gym. ArXiv Preprint <a href="https://arxiv.org/abs/1809.02627">ArXiv:1606.01540</a>.</p>
               </li>
               <!-- Add more references as needed -->
           </ol>
