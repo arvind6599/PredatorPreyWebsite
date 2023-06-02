@@ -25,6 +25,9 @@
 
     gtag('config', 'G-PYVRSFMDRL');
   </script>
+  <script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
         rel="stylesheet">
@@ -526,7 +529,7 @@
           <p>
             Whilst the prey and predator have opposing objectives, they demonstrate similar characteristics. Both agents operate
             within a continuous action space with two degrees of freedom: rotation about the y-axis and forward/backward movement.
-            Each degree of freedom allows the agent to select a value between [-1, 1], determining the direction and intensity of
+            Each degree of freedom allows the agent to select a value between \([-1, 1]\), determining the direction and intensity of
              movement. The agents' behavioral parameters consist of maximum movement and rotation speeds, which scale this intensity
               value. Notably, the predator possesses an additional box collider located at its face, resulting in the prey's death
               upon collision. Conversely, the prey lacks this collider as its primary goal involves evading the predator.
@@ -560,7 +563,7 @@
           <p>
             To control the region of binocular vision, we have extended this sensor to incorporate a parameter representing
             the number of depth rays. Consequently, we exclude depth information for any rays falling outside this region by
-            assigning a distance of $-1$. By using this modified Ray Perception sensor, we define two distinct sensor types:
+            assigning a distance of \(-1)\. By using this modified Ray Perception sensor, we define two distinct sensor types:
             predator-style and prey-style, which draw inspiration from the characteristic vision traits observed in real-world
             predators and prey, respectively.
           </p>
@@ -608,7 +611,7 @@
             penalty applied to the predator at each time step, and a positive reward if a prey is caught. This deliberate design
             choice serves to incentivize the predator to capture prey at the earliest opportunity. Conversely, the reward for the
             prey is formulated in the opposite manner, establishing a zero-sum game. The range of rewards is bounded within the
-            interval $[-1, 1]$. This reward specification enables a natural distinction between favorable and unfavorable
+            interval \([-1, 1]\). This reward specification enables a natural distinction between favorable and unfavorable
             outcomes of both agents.
           </p>
 
@@ -679,7 +682,13 @@
               <div class="column">
                 <h3 class="title is-5">Training details</h3>
                 <p>
-                  Our project employs a deep learning architecture based on a convolutional neural network (CNN).
+                  The predator and prey were each trained self-play for \(10^7\) steps, where one step corresponds to
+                  one frame in the simulation. The swap between the frozen training teams happens every \(3 \cdot 105\) training steps. At
+                  each episode, the agent is spawned with a random rotation the y-axis, and the maximum episode duration is \(10^4\).
+                  The model will play against the most recent version of the agent \(80\%\) of the time. The models both consist of
+                  a \(3\) hidden-layer MLP with \(512\) neurons each with batch at each layer. The model is optimized using
+                  PPO with the Adam (La: CITE) optimizer with a learning of \(0.0003\) and no decay. Finally, the buffer sizes of both
+                  agents are set to \(40960\).
                 </p>
               </div>
               <div class="column">
@@ -694,7 +703,9 @@
               <div class="column">
                 <h3 class="title is-5">Hardware</h3>
                 <p>
-                  Hardware details
+                  Any model has been trained on Linux and Python 3.7. The device uses a CUDA-enabled NVIDIA
+                  V100 PCIe 32 GB GPU with 7TFLOPS, a Xeon-Gold processor running with a 2.1 GHz clock speed, and 16GB of
+                  RAM. Our method is implemented with Unity’s ML-Agents package and PyTorch.
                 </p>
                 <h3 class="title is-5">Environments</h3>
                 <p>
@@ -874,7 +885,7 @@
           <iframe mozallowfullscreen="true" allow="autoplay; fullscreen"  src="https://play.unity.com/webgl/89a7d2dd-a44b-4efb-af96-1dc4544ddacb" style="border:0px #000000 none;" name="Predator Prey Interaction" scrolling="no" msallowfullscreen="true" allowfullscreen="true" webkitallowfullscreen="true" allowtransparency="true" frameborder="0" marginheight="px" marginwidth="320px" height="540px" width="960px"></iframe>
         </div>
         <h6 class="subtitle has-text-centered">
-          Play against a trained prey in our test environment
+          Play against a trained prey in our test environment by using your arrow keys.
         </h6>
         <br>
         <!--/ Future work. -->
