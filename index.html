@@ -255,15 +255,15 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            This research project investigates how different vision fields affect predator-prey interactions.
-            By simulating simplified environments and training agents with reinforcement learning,
-            we hope to identify trends that emerge in the strategies and effectiveness of trained predator
-            and prey agents which use varying vision fields.
-          </p>
-          <p>
-            We also hope to examine the psychology of chasing
-            and how prey can use occlusions in the environment to their advantage.
-            Our findings can help deepen our understanding of why various animals have evolved to have different vision systems.
+            This research project investigates how different
+            vision fields affect predator-prey interactions. By simulating
+            simplified environments and training agents with reinforcement
+            learning, we hope to identify trends that emerge in the
+            strategies and effectiveness of trained predator and prey agents
+            which use varying vision fields. Our methods can help gain
+            new insights into the complex interactions between predators
+            and prey, whilst improving upon existing literature regarding
+            predator-prey simulations.
           </p>
         </div>
 
@@ -334,13 +334,32 @@
         <h2 class="title is-3" id="intro">I. Introduction</h2>
         <div class="content has-text-justified">
           <p>
-            Intro here
+            Understanding the dynamics between predator-prey in in the natural world is a complex endeavor that
+            continues to intrigue researchers. These interactions, characterized by constant adaptation and evolution, offer valuable
+            insights into survival strategies employed by animals. Visual intelligence has emerged as a pivotal field of study, providing
+            a means to delve deeper into the perceptual and reactive abilities of animals within their environments. In this project, we
+            investigate the predator-prey setting, leveraging simplified environments and diverse vision fields to train agents and
+            unravel the underlying dynamics.
           </p>
           <p>
-            2nd para
+            The core challenge that this paper addresses is comprehending the strategies and behaviors exhibited by predators
+            and prey in their engagements for different types of vision. To gain valuable insights into the survival tactics employed
+            during attacks or hunting endeavors, we employ a simulation of simplified scenarios within controlled environments. In
+            addressing this challenge, we adopt a novel approach that involves training agents using a diverse range of vision
+            fields, designed to represent distinct types of visions observed in nature. Furthermore, our investigation delves into
+            the psychology of chasing (La: CITATION), exploring how prey agents can learn to exploit occlusions within their
+            environment to their advantage.
           </p>
           <p>
-            3rd para
+            To evaluate the effectiveness of our approach, we conduct extensive quantitative and qualitative evaluations of the
+            agent with different vision fields, which are optimized with reinforcement learning. We examine the emergent behaviors
+            exhibited by the trained agents and assess the impact of different vision fields on the success rates of both predators
+            and prey.
+          </p>
+          <p>
+            By analyzing the outcomes of these evaluations, we gain a deeper understanding of how variations in visual perception
+            can influence the performance and survival capabilities of agents within the predator-prey paradigm.
+            (La: Write more on results/conclusions/limitations)
           </p>
         </div>
       </div>
@@ -567,7 +586,7 @@
         <div class="content has-text-justified">
           <p>
             Whilst the prey and predator have opposing objectives, they demonstrate similar characteristics. Both agents operate
-            within a continuous action space with two degrees of freedom: rotation about the y-axis and forward/backward movement.
+            within a continuous action space with two degrees of freedom: rotation about the \(y\)-axis and forward/backward movement.
             Each degree of freedom allows the agent to select a value between \([-1, 1]\), determining the direction and intensity of
              movement. The agents' behavioral parameters consist of maximum movement and rotation speeds, which scale this intensity
               value. Notably, the predator possesses an additional box collider located at its face, resulting in the prey's death
@@ -711,7 +730,7 @@
         <h2 class="title is-3" id="exp">IV. Experiments</h2>
 
         <!-- Inference environments. -->
-        <h3 class="title is-4">Training setup</h3>
+        <h3 class="title is-4">Training Setup</h3>
         <p>
           Our project employs a deep learning architecture based on a convolutional neural network (CNN).
         </p>
@@ -721,7 +740,7 @@
             <!-- <h2 class="title is-2 has-text-centered">Model and Behavior Parameters</h2> -->
                 <h3 class="title is-5">Training details</h3>
                 <p>
-                  The predator and prey were each trained self-play for \(10^7\) steps, where one step corresponds to
+                  The predator and prey were each trained self-play for \(9 \cdot 10^6\) steps, where one step corresponds to
                   one frame in the simulation. The swap between the frozen training teams happens every \(3 \cdot 10^5\) training steps. At
                   each episode, the agent is spawned with a random rotation the y-axis, and the maximum episode duration is \(10^4\).
                   The model will play against the most recent version of the agent \(80\%\) of the time. The models both consist of
@@ -916,9 +935,12 @@
                       <h5 class="subtitle has-text-centered">
                         <font size="-0.7">
                           <span style="font-weight:normal">
-                            Rewards over ~10 million steps of training for each agent configuration.
-                            Note that the training logs for 'Normal' vision were lost, however the trend in rewards
-                            was similar to the other plots shown here.
+                            (Left) Average returns over 9 million steps of training for each agent configuration.
+                            (Right) Average episode lengths over 9 million steps of training for each agent configuration.
+                            Note that, unfortunately, the training logs for 'Normal' vision were lost. However the trend in rewards
+                            was similar to the other plots shown here. Furthermore, take note that the x-axis represents the number of steps,
+                            so if the predator started training, it would swap at the step \(300000\), and the x-label for the prey at total step \(300005\)
+                            would be \(5\). Used exponential smoothing of strength 0.8.
                         </span>
                         </font>
                       </h5>
@@ -974,11 +996,13 @@
             Future work
           </p>
         </div>
+
+        <h3 class="title is-3">Become the Predator</h3>
         <div align="center">
           <iframe mozallowfullscreen="true" allow="autoplay; fullscreen"  src="https://play.unity.com/webgl/89a7d2dd-a44b-4efb-af96-1dc4544ddacb" style="border:0px #000000 none;" name="Predator Prey Interaction" scrolling="no" msallowfullscreen="true" allowfullscreen="true" webkitallowfullscreen="true" allowtransparency="true" frameborder="0" marginheight="px" marginwidth="320px" height="540px" width="960px"></iframe>
         </div>
         <h6 class="subtitle has-text-centered">
-          Play against a trained prey in our test environment by using your arrow keys.
+          Play against a trained prey in our test environment by using your arrow keys. Please note that the predator has been slowed down, and you will likely easily be able to catch the prey. It is meant for getting an idea of the setup.
         </h6>
         <br>
         <!--/ Future work. -->
