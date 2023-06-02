@@ -347,7 +347,7 @@
             during attacks or hunting endeavors, we employ a simulation of simplified scenarios within controlled environments. In
             addressing this challenge, we adopt a novel approach that involves training agents using a diverse range of vision
             fields, designed to represent distinct types of visions observed in nature. Furthermore, our investigation delves into
-            the psychology of chasing (La: CITATION), exploring how prey agents can learn to exploit occlusions within their
+            the psychology of chasing, exploring how prey agents can learn to exploit occlusions within their
             environment to their advantage.
           </p>
           <p>
@@ -654,7 +654,8 @@
         <h3 class="title is-4">III-III. Setting up Reinforcement Learning Training</h3>
         <div class="content has-text-justified">
           <p>
-            The setting of predator-prey dynamics can be framed as a two-player dynamic game \lars{(CITATION)}. This game-theoretic
+            The setting of predator-prey dynamics can be framed as a two-player dynamic game <a href="https://ieeexplore.ieee.org/abstract/document/7868186">[6]</a>,
+            <a href="https://epubs.siam.org/doi/pdf/10.1137/1.9781611971132.bm">[7]</a>. This game-theoretic
             formulation captures the interactions and influence of the agents on the state of the game, providing a framework
             for studying predator-prey dynamics based on a common utility function. The game is only played for a set number of
             steps, until it is terminated.
@@ -667,7 +668,16 @@
           </p>
 
           <p>
-            The reward structure employed in our proposed framework, as illustrated in \lars{FIGURE}, incorporates a constant time
+            $$
+              G_\text{pred} = \sum_{i=1}^{T}\left[\frac{\mathbb{1}(\text{prey caught at } t)}{N_\text{prey}} - \frac{1}{T}\right]
+            $$
+            $$
+              G_\text{prey} = - G_\text{pred}
+            $$
+          </p>
+
+          <p>
+            The reward structure employed in our proposed framework, as illustrated in the figure above, incorporates a constant time
             penalty applied to the predator at each time step, and a positive reward if a prey is caught. This deliberate design
             choice serves to incentivize the predator to capture prey at the earliest opportunity. Conversely, the reward for the
             prey is formulated in the opposite manner, establishing a zero-sum game. The range of rewards is bounded within the
@@ -684,9 +694,10 @@
 
           <p>
             Overall, the nature of the game poses additional challenges, as it suffers from many of the problems in
-            competitive multi-agent learning \lars{ADD CITATION}. Multi-agent reinforcement learning in competitive scenarios
-            poses several challenges \lars{(PAPER)}. This paper employs a prominent technique called "self-play"
-            \lars{(CITATION)} to address these difficulties. The diagram below provides a high-level overview of this approach.
+            competitive multi-agent learning <a href="https://link.springer.com/chapter/10.1007/978-3-642-14435-6_7">[8]</a>. Multi-agent reinforcement learning in competitive scenarios
+            poses several challenges <a href="https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=46662ca0627974ec3c3c038ccc78b2ef9ef92218">[9]</a>. This paper employs a prominent technique called "self-play"
+            <a href="https://proceedings.neurips.cc/paper/2020/file/172ef5a94b4dd0aa120c6878fc29f70c-Paper.pdf">[10]</a>, <a href="https://www.science.org/doi/pdf/10.1126/science.aar6404?casa_token=U6oPNZ67XRcAAAAA%3Ai-nCPopyruTropl7_QoP3RWxM93tlHd75lV826n7-8X5_XlX0EniJPBxQ9KnsNYUHSxFyeLGBa8juko&">[11]</a>
+            to address these difficulties. The diagram below provides a high-level overview of this approach.
           </p>
           <br>
           <div align="center" class="box">
@@ -705,7 +716,7 @@
             a predetermined number of iterations, the frozen model is trained, and the other agent's model is frozen.
             However, a potential issue arises from the bias introduced by repeatedly playing against the most recent model.
             This bias can lead to overfitting and poor generalization. To mitigate this problem, we incorporate an ELO ranking
-            system as done in MuZero \lars{CITATION}, enabling models to compete against earlier versions of their opponents.
+            system as done in MuZero <a href="https://www.nature.com/articles/s41586-020-03051-4">[12]</a>, enabling models to compete against earlier versions of their opponents.
             By doing so, we reduce the impact of bias, leading to improved generalization and robustness in the learned policies.
           </p>
           <br>
@@ -743,7 +754,8 @@
                 <h3 class="title is-5">Training details</h3>
                 <p>
                   The agents are trained on all environments mentioned in the methodology section in parallel. By having environments of different difficulties,
-                  a speed-up in training can be observed, similar as in curriculum learning \lars{CITE}. Furthermore, multiple agents of each type were present
+                  a speed-up in training can be observed, similar as in curriculum learning <a href="https://dl.acm.org/doi/abs/10.1145/1553374.1553380?casa_token=nh2ZrojaWoAAAAAA:ch-UtBUm-jXdt36EJoGrONsdXTfKYTOF9g3wpMqUjykIzeeCv2_d4p2hoGlyuJRGTlWCdZyWmPVmmg">[13]</a>,
+                  <a href="https://dl.acm.org/doi/abs/10.5555/3455716.3455897">[14]</a>. Furthermore, multiple agents of each type were present
                   in each environment. Although this could make the environment unstable, it greatly enhances training speed.
                 </p>
                 <p>
@@ -752,7 +764,7 @@
                   each episode, the agent is spawned with a random rotation the y-axis, and the maximum episode duration is \(10^4\).
                   The model will play against the most recent version of the agent \(80\%\) of the time. The models both consist of
                   a \(3\) hidden-layer MLP with \(512\) neurons each with batch at each layer. The model is optimized using
-                  PPO with the Adam (La: CITE) optimizer with a learning of \(0.0003\) and no decay. Finally, the buffer sizes of both
+                  PPO with the Adam <a href="https://arxiv.org/abs/1412.6980">[15]</a> optimizer with a learning of \(0.0003\) and no decay. Finally, the buffer sizes of both
                   agents are set to \(40960\).
                 </p>
                 <h3 class="title is-5">Agent parameters</h3>
@@ -898,7 +910,7 @@
             <p>
               The models were trained using a CUDA-enabled NVIDIA
               V100 PCIe 32 GB GPU with 7TFLOPS, a Xeon-Gold processor running with a 2.1 GHz clock speed, and 16GB of
-              RAM. Our method is implemented with Unity’s ML-Agents package and PyTorch running on Linux with Python 3.7.
+              RAM. Our method is implemented with Unity’s ML-Agents package and PyTorch, running on Linux with Python 3.7.
             </p>
 
           </div>
@@ -1186,6 +1198,36 @@
               </li>
               <li>
                 <p>Brockman, G., Cheung, V., Pettersson, L., Schneider, J., Schulman, J., Tang, J., & Zaremba, W. (2016). Openai gym. ArXiv Preprint <a href="https://arxiv.org/abs/1809.02627">ArXiv:1606.01540</a>.</p>
+              </li>
+              <li>Başar, T., & Olsder, G. J. (1998). Dynamic noncooperative game theory. Society for Industrial and Applied Mathematics.
+                <p>Tsai, Dorian, Timothy L. Molloy, and Tristan Perez. "Inverse two-player zero-sum dynamic games." 2016 Australian Control Conference (AuCC). IEEE, 2016.</p>
+              </li>
+              <li>
+                <p>Başar, T., & Olsder, G. J. (1998). Dynamic noncooperative game theory. Society for Industrial and Applied Mathematics.</p>
+              </li>
+              <li>
+                <p>Buşoniu, L., Babuška, R., & De Schutter, B. (2010). Multi-agent reinforcement learning: An overview. Innovations in multi-agent systems and applications-1, 183-221.</p>
+              </li>
+              <li>
+                <p>Shoham, Y., Powers, R., & Grenager, T. (2003). Multi-agent reinforcement learning: a critical survey (Vol. 288). Technical report, Stanford University.</p>
+              </li>
+              <li>
+                <p>Bai, Y., Jin, C., & Yu, T. (2020). Near-optimal reinforcement learning with self-play. Advances in neural information processing systems, 33, 2159-2170.</p>
+              </li>
+              <li>
+                <p>Silver, D., Hubert, T., Schrittwieser, J., Antonoglou, I., Lai, M., Guez, A., ... & Hassabis, D. (2018). A general reinforcement learning algorithm that masters chess, shogi, and Go through self-play. Science, 362(6419), 1140-1144.</p>
+              </li>
+              <li>
+                <p>Schrittwieser, J., Antonoglou, I., Hubert, T., Simonyan, K., Sifre, L., Schmitt, S., ... & Silver, D. (2020). Mastering atari, go, chess and shogi by planning with a learned model. Nature, 588(7839), 604-609.</p>
+              </li>
+              <li>
+                <p>Bengio, Y., Louradour, J., Collobert, R., & Weston, J. (2009, June). Curriculum learning. In Proceedings of the 26th annual international conference on machine learning (pp. 41-48).</p>
+              </li>
+              <li>
+                <p>Narvekar, S., Peng, B., Leonetti, M., Sinapov, J., Taylor, M. E., & Stone, P. (2020). Curriculum learning for reinforcement learning domains: A framework and survey. The Journal of Machine Learning Research, 21(1), 7382-7431.</p>
+              </li>
+              <li>
+                <p>Kingma, D. P., & Ba, J. (2014). Adam: A method for stochastic optimization. ArXiv Preprint <a href="https://arxiv.org/abs/1412.6980">arXiv:1412.6980</a></p>
               </li>
               <!-- Add more references as needed -->
           </ol>
