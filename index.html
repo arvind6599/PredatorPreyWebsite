@@ -150,12 +150,13 @@
 
 <section class="hero teaser">
   <div class="container is-max-desktop">
-    <div class="hero-body">
+    <div class="box">
       <img src="https://imgtr.ee/images/2023/06/01/S2FLI.png">
       <!--video id="teaser" autoplay="" muted="" loop="" playsinline="" height="100%" width="100%" poster="static/videos/loading.gif">
         <source src="static/videos/palmer_trimmed.mp4" type="video/mp4">
       </video-->
     </div>
+    <br>
   </div>
 </section>
 
@@ -338,14 +339,16 @@
              predator-prey ecosystems, in which agents show a biologically plausible approximation of their co-evolution
              over multiple generations in nature.
           </p>
-          <img src="static/images/predator-prey-behaviour-related-work.png"
-               alt="Comparison of potential distance metric that correlate with reachability.">
-          <h5 class="subtitle has-text-centered">
-       			<font size="-1.5">
-              Left: <span style="font-weight:normal">Initial random location of predators and prey.</span> <br>
-              Right: <span style="font-weight:normal">Emergence of swarming among predators and prey.</span>
-       			</font>
-     			</h5>
+          <div class="box">
+            <img src="static/images/predator-prey-behaviour-related-work.png"
+                 alt="Comparison of potential distance metric that correlate with reachability.">
+            <h5 class="subtitle has-text-centered">
+         			<font size="-1.5">
+                Left: <span style="font-weight:normal">Initial random location of predators and prey.</span> <br>
+                Right: <span style="font-weight:normal">Emergence of swarming among predators and prey.</span>
+         			</font>
+       			</h5>
+          </div>
           <p>
             This work however only uses a very simplified 2D environment without vision.
           </p>
@@ -362,13 +365,15 @@
           predator-prey interactions) develop sophisticated tool use and coordination.
           The study provides evidence that multi-agent self-play can lead to emergent auto curricula.
         </p>
-        <img src="static/images/openai-hide-and-seek.gif"
-             alt="OpenAI Hide and Seek">
-        <h5 class="subtitle has-text-centered">
-          <font size="-1.5">
-            <span style="font-weight:normal">Use of vision sensors in the hide-and-seek environment</span>
-          </font>
-        </h5>
+        <div class="box">
+          <img src="static/images/openai-hide-and-seek.gif"
+               alt="OpenAI Hide and Seek">
+          <h5 class="subtitle has-text-centered">
+            <font size="-1.5">
+              <span style="font-weight:normal">Use of vision sensors in the hide-and-seek environment</span>
+            </font>
+          </h5>
+        </div>
          <p>
            Whlist the agents are trained in a very complex environment with vision sensors, this study doesn't examine the
            effects of varying the vision fields on the emergent behaviours by the agents.
@@ -520,14 +525,15 @@
               upon collision. Conversely, the prey lacks this collider as its primary goal involves evading the predator. \lars{Show figure}.
           </p>
           <br>
-          <div align="center">
+          <div align="center" class="box">
             <img src="static/images/agent-box-colliders.jpeg" alt="Box colliders for the agents">
+            <h5 class="subtitle has-text-centered">
+              <font size="-0.7">
+                <span style="font-weight:normal">Box colliders for the predator and prey agents</span>
+              </font>
+            </h5>
           </div>
-          <h5 class="subtitle has-text-centered">
-            <font size="-0.7">
-              <span style="font-weight:normal">Box colliders for the predator and prey agents</span>
-            </font>
-          </h5>
+
           <br>
         </div>
         <!--/ Creating agents. -->
@@ -552,14 +558,15 @@
             predators and prey, respectively.
           </p>
           <br>
-          <div align="center">
+          <div align="center" class="box">
             <img src="static/images/ray-perception-sensors.png" alt="Predator and prey-style ray perception sensors">
+            <h5 class="subtitle has-text-centered">
+              <font size="-0.7">
+                <span style="font-weight:normal">Predator- and prey-style ray perception sensors</span>
+              </font>
+            </h5>
           </div>
-          <h5 class="subtitle has-text-centered">
-            <font size="-0.7">
-              <span style="font-weight:normal">Predator- and prey-style ray perception sensors</span>
-            </font>
-          </h5>
+
           <br>
           <p>
             Utilizing the modified Ray Perception sensor offers distinct advantages for this paper by providing precise
@@ -612,14 +619,15 @@
             \lars{(CITATION)} to address these difficulties. \lars{FIGURE} provides a high-level overview of this approach.
           </p>
           <br>
-          <div align="center">
+          <div align="center" class="box">
             <img src="static/images/self-play.jpeg" alt="Self play">
+            <h5 class="subtitle has-text-centered">
+              <font size="-0.7">
+                <span style="font-weight:normal">Diagram showing the self-play mechanism</span>
+              </font>
+            </h5>
           </div>
-          <h5 class="subtitle has-text-centered">
-            <font size="-0.7">
-              <span style="font-weight:normal">Diagram showing the self-play mechanism</span>
-            </font>
-          </h5>
+
           <br>
 
           <p>
@@ -672,7 +680,9 @@
                 <p>
                   Behavioural and vision params. rotation and movement speeds and specific params of sensors.
                 </p>
-                <img src="static/images/configs_table.png" alt="Vision sensor configurations">
+                <div class="box">
+                  <img src="static/images/configs_table.png" alt="Vision sensor configurations">
+                </div>
               </div>
               <div class="column">
                 <h3 class="title is-5">Hardware</h3>
@@ -695,44 +705,46 @@
         </div>
         <br/>
 
-        <div class="table-container">
-    <table class="table" align="center">
-        <thead>
-            <tr>
-                <th></th>
-                <th>Rays per direction</th>
-                <th>Depth rays per direction</th>
-                <th>Max ray degrees</th>
-                <th>Ray length</th>
-                <th>Observation stacks</th>
-                <th>Field of view</th>
-                <th>Binocular region</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><b>Prey-style</b></td>
-                <td>30</td>
-                <td>4</td>
-                <td>160</td>
-                <td>15</td>
-                <td>5</td>
-                <td><em>320°</em></td>
-                <td><em>43°</em></td>
-            </tr>
-            <tr>
-                <td><b>Predator-style</b></td>
-                <td>30</td>
-                <td>20</td>
-                <td>85</td>
-                <td>15</td>
-                <td>5</td>
-                <td><em>170°</em></td>
-                <td><em>113°</em></td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+        <div class="box">
+          <div class="table-container">
+              <table class="table" align="center">
+                  <thead>
+                      <tr>
+                          <th></th>
+                          <th>Rays per direction</th>
+                          <th>Depth rays per direction</th>
+                          <th>Max ray degrees</th>
+                          <th>Ray length</th>
+                          <th>Observation stacks</th>
+                          <th>Field of view</th>
+                          <th>Binocular region</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                          <td><b>Prey-style</b></td>
+                          <td>30</td>
+                          <td>4</td>
+                          <td>160</td>
+                          <td>15</td>
+                          <td>5</td>
+                          <td><em>320°</em></td>
+                          <td><em>43°</em></td>
+                      </tr>
+                      <tr>
+                          <td><b>Predator-style</b></td>
+                          <td>30</td>
+                          <td>20</td>
+                          <td>85</td>
+                          <td>15</td>
+                          <td>5</td>
+                          <td><em>170°</em></td>
+                          <td><em>113°</em></td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+        </div>
 
       </div>
     </div>
@@ -814,7 +826,9 @@
             Results
           </p>
         </div>
-        <iframe src="./static/figures/median_time_survived.html" frameborder="0" width="100%" height="500px"></iframe>
+        <div class="box">
+          <iframe src="./static/figures/median_time_survived.html" frameborder="0" width="100%" height="500px"></iframe>
+        </div>
 
         <!--/ Results. -->
 
