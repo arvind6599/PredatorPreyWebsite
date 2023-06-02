@@ -315,8 +315,11 @@
         <h2 class="title is-3">Related work</h2>
         <div class="content has-text-justified">
           <p>
-            There isn't much existing work related to simulating predator prey dynamics, especially in the context of vision.
-            The two closest studies we found are described below.
+            The exploration of predator-prey dynamics within the realm of vision has received relatively little attention in
+            the existing literature. While research on population dynamics in predator-prey systems is well-established,
+            previous studies predominantly relied on differential models like the Lotka-Volterra equations for basic analysis
+            \lars{CITE}. However, due to the significant oversimplification inherent in these approaches, alternative methods
+            utilizing optimization techniques have been introduced to learn more effective population dynamics \lars{CITE}.
           </p>
         </div>
       </div>
@@ -335,9 +338,9 @@
           <h2 class="title is-6">Co-Evolution of Predator-Prey Ecosystems by Reinforcement Learning Agents
                                  <a href="https://doi.org/10.3390/e23040461">[1]</a></h2>
           <p>
-             This study utilises multi-agent reinforcement learning (MARL) approaches to simulate co-evolution mechanisms in
-             predator-prey ecosystems, in which agents show a biologically plausible approximation of their co-evolution
-             over multiple generations in nature.
+            Most prominently, this paper explores the use of multi-agent reinforcement learning (MARL) techniques to simulate
+            the co-evolution mechanisms in predator-prey ecosystems. The study demonstrates a biologically plausible
+            approximation of the agents' co-evolution over multiple generations in nature.
           </p>
           <div class="box">
             <img src="static/images/predator-prey-behaviour-related-work.png"
@@ -350,7 +353,7 @@
        			</h5>
           </div>
           <p>
-            This work however only uses a very simplified 2D environment without vision.
+            This work however is limited to a simplified 2D environment without incorporating vision.
           </p>
         </div>
       </div>
@@ -361,9 +364,11 @@
         <h2 class="title is-6">Emergent tool use from multi-agent autocurricula
                                <a href="https://openai.com/research/emergent-tool-use">[2]</a></h2>
         <p>
-          This work by OpenAI explores how agents in a hide-and-seek game environment (which is similar in some ways to
-          predator-prey interactions) develop sophisticated tool use and coordination.
-          The study provides evidence that multi-agent self-play can lead to emergent auto curricula.
+          Research conducted by OpenAI investigates the emergence of sophisticated tool use and coordination among agents in
+          a hide-and-seek game environment, which shares similarities with predator-prey interactions. The study showcases the
+          potential of multi-agent self-play in generating emergent auto curricula. Notably, this research trains agents in a
+          complex environment equipped with vision sensors.
+
         </p>
         <div class="box">
           <img src="static/images/openai-hide-and-seek.gif"
@@ -375,8 +380,7 @@
           </h5>
         </div>
          <p>
-           Whlist the agents are trained in a very complex environment with vision sensors, this study doesn't examine the
-           effects of varying the vision fields on the emergent behaviours by the agents.
+           The study however does not explicitly explore the effects of varying the vision fields on the emergent behaviors of the agents.
          </p>
       </div>
     </div>
@@ -390,8 +394,10 @@
       <div class="column is-full-width">
         <div class="content has-text-justified">
           <p>
-            Our approach differs from these studies in the sense that we emphasize the emergence of different behaviours based on visual
-            perception of the agents, in terms of field of view and depth perception.
+            Given the existing gaps in the literature for the study of predator-prey dynamics in the context of vision, our work aims
+            to address them by incorporating various vision fields to represent different predators and prey. Through this approach,
+            we investigate the impact of diverse visual perspectives on the emergent behaviors of the agents, providing valuable insights
+            into the adaptive strategies employed in predator-prey interactions.
           </p>
         </div>
       </div>
