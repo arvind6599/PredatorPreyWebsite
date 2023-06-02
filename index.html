@@ -147,6 +147,18 @@
   </div>
 </section>
 
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img src="https://imgtr.ee/images/2023/06/01/S2FLI.png">
+      <!--video id="teaser" autoplay="" muted="" loop="" playsinline="" height="100%" width="100%" poster="static/videos/loading.gif">
+        <source src="static/videos/palmer_trimmed.mp4" type="video/mp4">
+      </video-->
+    </div>
+  </div>
+</section>
+
 <!-- USEFUL SECTION - static video with a caption -->
 <!--section class="hero teaser">
   <div class="container is-max-desktop">
@@ -384,52 +396,6 @@
 </section>
 
 
-<section class="hero is-light is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item">
-          <a href="static/images/training/control_train.jpg" data-lightbox="image">
-            <img src="static/images/training/control_train.jpg" alt="Image 1">
-          </a>
-          <div class="caption">
-            <h2 class="subtitle has-text-centered">Control Environment</h2>
-            <p class="subcaption has-text-centered">Screenshot of Training Environment 1</p>
-          </div>
-        </div>
-        <div class="item">
-          <a href="static/images/training/forrest.jpg" data-lightbox="image">
-            <img src="static/images/training/forrest.jpg" alt="Image 2">
-          </a>
-          <div class="caption">
-            <h2 class="subtitle has-text-centered">Forrest Environment</h2>
-            <p class="subcaption has-text-centered">Screenshot of Training Environment 2</p>
-          </div>
-        </div>
-        <div class="item">
-          <a href="static/images/training/holes.jpg" data-lightbox="image">
-            <img src="static/images/training/holes.jpg" alt="Image 3">
-          </a>
-          <div class="caption">
-            <h2 class="subtitle has-text-centered">Escape Room Environment</h2>
-            <p class="subcaption has-text-centered">Screenshot of Training Environment 3</p>
-          </div>
-        </div>
-        <div class="item">
-          <a href="static/images/training/rocky.jpg" data-lightbox="image">
-            <img src="static/images/training/rocky.jpg" alt="Image 4">
-          </a>
-          <div class="caption">
-            <h2 class="subtitle has-text-centered">Rocky Environment</h2>
-            <p class="subcaption has-text-centered">Screenshot of Training Environment 4</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
 
 <section class="section">
   <div class="container is-max-desktop">
@@ -439,17 +405,76 @@
         <h2 class="title is-3">Method</h2>
 
         <!-- Creating environments. -->
-        <h3 class="title is-4">Creating the environments</h3>
+        <h3 class="title is-4">Environments</h3>
         <div class="content has-text-justified">
           <p>
             Creating environments
           </p>
         </div>
-        <br/>
         <!--/ Creating environments. -->
 
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item">
+          <a href="static/images/training/control_train.jpg" data-lightbox="image">
+            <img src="static/images/training/control_train.jpg" alt="Image 1">
+          </a>
+          <div class="caption">
+            <h2 class="subtitle has-text-centered"><font size="-0.7">Control</font></h2>
+            <p class="subcaption has-text-centered">Screenshot of Training Environment 1</p>
+          </div>
+        </div>
+        <div class="item">
+          <a href="static/images/training/forrest.jpg" data-lightbox="image">
+            <img src="static/images/training/forrest.jpg" alt="Image 2">
+          </a>
+          <div class="caption">
+            <h2 class="subtitle has-text-centered"><font size="-0.7">Forest</font></h2>
+            <p class="subcaption has-text-centered">Screenshot of Training Environment 2</p>
+          </div>
+        </div>
+        <div class="item">
+          <a href="static/images/training/holes.jpg" data-lightbox="image">
+            <img src="static/images/training/holes.jpg" alt="Image 3">
+          </a>
+          <div class="caption">
+            <h2 class="subtitle has-text-centered"><font size="-0.7">Escape Room</font></h2>
+            <p class="subcaption has-text-centered">Screenshot of Training Environment 3</p>
+          </div>
+        </div>
+        <div class="item">
+          <a href="static/images/training/rocky.jpg" data-lightbox="image">
+            <img src="static/images/training/rocky.jpg" alt="Image 4">
+          </a>
+          <div class="caption">
+            <h2 class="subtitle has-text-centered"><font size="-0.7">Rocky</font></h2>
+            <p class="subcaption has-text-centered">Screenshot of Training Environment 4</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <h6 class="subtitle has-text-centered">
+      Environments used for training the agents
+    </h6>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Method. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
         <!-- Creating agents. -->
-        <h3 class="title is-4">Creating the agents</h3>
+        <h3 class="title is-4">Predator and Prey Agents</h3>
         <div class="content has-text-justified">
           <p>
             Agents
@@ -458,7 +483,7 @@
         <!--/ Creating agents. -->
 
         <!-- Vision sensor. -->
-        <h3 class="title is-4">Implementing the vision sensor</h3>
+        <h3 class="title is-5">Vision sensor</h3>
         <div class="content has-text-justified">
           <p>
             Ray perception sensor
@@ -467,7 +492,7 @@
         <!--/ Vision sensor. -->
 
         <!-- Training. -->
-        <h3 class="title is-4">Training the agents</h3>
+        <h3 class="title is-4">Setting up Reinforcement Learning Training</h3>
         <div class="content has-text-justified">
           <p>
             Training
@@ -478,62 +503,6 @@
       </div>
     </div>
     <!--/ Method. -->
-  </div>
-</section>
-
-
-
-<section class="hero is-light is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item">
-          <a href="./static/images/inference/control.jpg" data-lightbox="image">
-            <img src="./static/images/inference/control.jpg" alt="Control Image">
-          </a>
-          <div class="caption">
-            <h2 class="subtitle has-text-centered">Control Environment</h2>
-            <p class="subcaption has-text-centered">Screenshot of Training Environment: Control</p>
-          </div>
-        </div>
-        <div class="item">
-          <a href="./static/images/inference/hide.jpg" data-lightbox="image">
-            <img src="./static/images/inference/hide.jpg" alt="Hide Image">
-          </a>
-          <div class="caption">
-            <h2 class="subtitle has-text-centered">Hide Environment</h2>
-            <p class="subcaption has-text-centered">Screenshot of Training Environment: Hide</p>
-          </div>
-        </div>
-        <div class="item">
-          <a href="./static/images/inference/seek.jpg" data-lightbox="image">
-            <img src="./static/images/inference/seek.jpg" alt="Seek Image">
-          </a>
-          <div class="caption">
-            <h2 class="subtitle has-text-centered">Seek Environment</h2>
-            <p class="subcaption has-text-centered">Screenshot of Training Environment: Seek</p>
-          </div>
-        </div>
-        <div class="item">
-          <a href="./static/images/inference/rocks.jpg" data-lightbox="image">
-            <img src="./static/images/inference/rocks.jpg" alt="Rocks Image">
-          </a>
-          <div class="caption">
-            <h2 class="subtitle has-text-centered">Rocks Environment</h2>
-            <p class="subcaption has-text-centered">Screenshot of Training Environment: Rocks</p>
-          </div>
-        </div>
-        <div class="item">
-          <a href="./static/images/inference/trees.jpg" data-lightbox="image">
-            <img src="./static/images/inference/trees.jpg" alt="Trees Image">
-          </a>
-          <div class="caption">
-            <h2 class="subtitle has-text-centered">Trees Environment</h2>
-            <p class="subcaption has-text-centered">Screenshot of Training Environment: Trees</p>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -557,13 +526,13 @@
             <!-- <h2 class="title is-2 has-text-centered">Model and Behavior Parameters</h2> -->
             <div class="columns">
               <div class="column">
-                <h3 class="title is-5">Model Architecture</h3>
+                <h3 class="title is-5">Training details</h3>
                 <p>
                   Our project employs a deep learning architecture based on a convolutional neural network (CNN).
                 </p>
               </div>
               <div class="column">
-                <h3 class="title is-5">Behavior Settings</h3>
+                <h3 class="title is-5">Agent parameters</h3>
                 <p>
                   The behavior of our model is controlled by a set of adjustable parameters to fine-tune its performance and adaptability.
                   These parameters include:
@@ -575,7 +544,7 @@
                 </p>
               </div>
               <div class="column">
-                <h3 class="title is-5">Behavior Settings</h3>
+                <h3 class="title is-5">Environments</h3>
                 <p>
                   The behavior of our model is controlled by a set of adjustable parameters to fine-tune its performance and adaptability.
                   These parameters include:
@@ -587,7 +556,7 @@
                 </p>
               </div>
               <div class="column">
-                <h3 class="title is-5">Behavior Settings</h3>
+                <h3 class="title is-5">Hardware</h3>
                 <p>
                   The behavior of our model is controlled by a set of adjustable parameters to fine-tune its performance and adaptability.
                   These parameters include:
@@ -603,27 +572,88 @@
         </div>
         <br/>
 
-        
+      </div>
+    </div>
+    <!--/ Experiments. -->
+  </div>
+</section>
 
-        <!-- Inference environments. -->
-        <h3 class="title is-4">Inference environments</h3>
-        <div class="content has-text-justified">
-          <p>
-            Inference environments
-          </p>
+
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item">
+          <a href="./static/images/inference/control.jpg" data-lightbox="image">
+            <img src="./static/images/inference/control.jpg" alt="Control Image">
+          </a>
+          <div class="caption">
+            <h2 class="subtitle has-text-centered"><font size="-0.7">Control</font></h2>
+            <p class="subcaption has-text-centered">Screenshot of Training Environment: Control</p>
+          </div>
         </div>
-        <br/>
-        <!--/ Inference environments. -->
-        
+        <div class="item">
+          <a href="./static/images/inference/hide.jpg" data-lightbox="image">
+            <img src="./static/images/inference/hide.jpg" alt="Hide Image">
+          </a>
+          <div class="caption">
+            <h2 class="subtitle has-text-centered"><font size="-0.7">Hide</font></h2>
+            <p class="subcaption has-text-centered">Screenshot of Training Environment: Hide</p>
+          </div>
+        </div>
+        <div class="item">
+          <a href="./static/images/inference/seek.jpg" data-lightbox="image">
+            <img src="./static/images/inference/seek.jpg" alt="Seek Image">
+          </a>
+          <div class="caption">
+            <h2 class="subtitle has-text-centered"><font size="-0.7">Seek</font></h2>
+            <p class="subcaption has-text-centered">Screenshot of Training Environment: Seek</p>
+          </div>
+        </div>
+        <div class="item">
+          <a href="./static/images/inference/rocks.jpg" data-lightbox="image">
+            <img src="./static/images/inference/rocks.jpg" alt="Rocks Image">
+          </a>
+          <div class="caption">
+            <h2 class="subtitle has-text-centered"><font size="-0.7">Rocks</font></h2>
+            <p class="subcaption has-text-centered">Screenshot of Training Environment: Rocks</p>
+          </div>
+        </div>
+        <div class="item">
+          <a href="./static/images/inference/trees.jpg" data-lightbox="image">
+            <img src="./static/images/inference/trees.jpg" alt="Trees Image">
+          </a>
+          <div class="caption">
+            <h2 class="subtitle has-text-centered"><font size="-0.7">Trees</font></h2>
+            <p class="subcaption has-text-centered">Screenshot of Training Environment: Trees</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <h6 class="subtitle has-text-centered">
+      Environments used for inference
+    </h6>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Experiments. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+
         <!-- Results. -->
         <!-- Include median_time_survived.html using an iframe -->
-        <iframe src="./static/figures/median_time_survived.html" frameborder="0" width="100%" height="500px"></iframe>
         <h3 class="title is-4">Results</h3>
         <div class="content has-text-justified">
           <p>
             Results
           </p>
         </div>
+        <iframe src="./static/figures/median_time_survived.html" frameborder="0" width="100%" height="500px"></iframe>
+
         <!--/ Results. -->
 
       </div>
