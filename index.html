@@ -1298,39 +1298,27 @@
         <h2 class="title is-3" id="conclusion">V. Conclusions and Limitations</h2>
 
         <div class="content has-text-justified">
-          <p>With this work, we have developed a new way to investigate the role of vision in simulated predator-prey
-            interactions. Through our experiments where we vary the vision fields of predator and prey agents and train
-            them against each other using reinforcement learning, we are able to make the following overarching observations:</p>
-          <ul>
-              <li>Depth information seems to be crucial for predators. Even for prey, depth can act as an important cue but
-                to a lesser extent.</li>
-              <li>Wide field of view is crucial to prey. Whereas predators mainly need to look in the direction in which they
-                are moving at most times, prey needs both to see where they're going while also being able to sense predators in
-                their periphery to evade them.</li>
-              <li>Memory plays an important role in complementing visual perception in predator-prey interactions.</li>
-          </ul>
-          <p>These observations support our current understanding of why real-world predators and prey developed vision systems
-            that prioritized depth perception and field of view, respectively.</p>
+          <p>
+            Our work investigates the role of vision in simulated predator-prey interactions. By varying the vision fields of predator and prey agents and training them using reinforcement learning, we make the following observations:
+            <ul>
+              <li> Depth information is crucial for predators, while prey also benefit from depth perception to a lesser extent.
+              <li> Prey require a wide field of view to navigate and detect predators in their periphery, while predators mainly focus on the direction of their movement.
+              <li> Memory complements visual perception in predator-prey interactions.
+            </ul>
 
+            These observations support the understanding of why real-world predators prioritize depth perception and prey prioritize a wide field of view in their vision systems.
+            </p>
         </div>
 
         <!-- Limitations. -->
         <h3 class="title is-4">V-A. Limitations and Future Work</h3>
         <div class="content has-text-justified">
           <p>
-            Whilst we observe many interesting behaviors and were able to obtain promising initial results, it's important
-            to note there are many limitations to our approach. Real-life predator prey interactions are incredibly complex,
-            and it's almost impossible to capture all these complexities in a simple simulated environment such as this. The most
-            pertinent limitations and potential future work are as follows:
+            Despite interesting observations and promising initial results, our approach has several limitations due to the complex nature of real-life predator-prey interactions. Capturing all these complexities in a simple simulated environment like this is nearly impossible. The main limitations and areas for potential future work include:
           </p>
           <ul>
             <li>
-              The predator and prey agents exhibited seemingly untrained or random behaviour at times, indicating that the agents
-              needed to be trained further. For comparison, in OpenAI's hide and seek environment it took ~2.7 million <em>episodes</em> for
-              the seekers to learn to consistently chase the hiders, and they even used a curriculum learning approach to help facilitate
-              learning. Meanwhile our training ran for only ~10 million steps in total (~corresponds to an order of magnitude \(10^4\)
-              episodes). Whilst training at OpenAI's scale is of course not feasible, the agents would likely have benefited greatly
-              from further training or an alternative strategy such as curriculum learning.
+              The predator and prey agents sometimes displayed untrained or random behavior, suggesting a need for further training. OpenAI's hide and seek environment required approximately 2.7 million episodes for seekers to consistently chase hiders, even with the aid of a curriculum learning approach. Our training lasted only around 10 million steps (approximately \(10^4\) episodes). Although training on OpenAI's scale is not feasible, additional training or alternative strategies like curriculum learning would have likely benefitted the agents greatly.
             </li>
           </ul>
 
@@ -1338,13 +1326,7 @@
 
           <ul>
             <li>
-              As we observed, memory is crucial to complement vision in predator-prey scenarios, however our agents
-              had virtually no memory. Not only would the agents forget about an object as soon as it fell out of its
-              field of view, but since they didn't have any positional information they also couldn't plan a smarter
-              trajectory knowing where they'd been and what they'd seen (e.g. to avoid backing into a wall and not going
-              anywhere). To address this, we could increase the observation stack to give the agents more memory, and
-              potentially include past positional information as an additional observation. We could also try experimenting
-              with a recurrent neural network instead of a vanilla multi-layer perceptron to better model the temporal information.
+              Memory is essential for complementing vision in predator-prey scenarios, but our agents lacked memory. They forgot objects as soon as they left their field of view and had no positional information for planning trajectories. To address this, we can increase the observation stack to provide more memory and consider including past positional information. Additionally, using a recurrent neural network instead of a multi-layer perceptron could better capture temporal information.
             </li>
           </ul>
 
@@ -1376,19 +1358,13 @@
 
           <ul>
             <li>
-              Another major simplification we made is in terms of the action space of the agents. Our agents can only move
-              backward/forwards or rotate, however, there are many more degrees of freedom for real-life predators and prey,
-              some of which could prove very advantageous in such scenarios. For example, in reality, it would be possible for
-              an agent to turn its head to see in a different direction from where it's moving. Having this additional degree of
-              freedom coupled with memory could allow the prey with predator vision to look backward, gauge where the predator is,
-              and then look forward again to run away — similar to how we as humans (who have predator-style vision) might behave
-              when being chased.
+              We simplified the action space for our agents by restricting them to backward/forward movement and rotation. In reality, predators and prey have more degrees of freedom, such as the ability to turn their heads and look in different directions while moving. This additional freedom, combined with memory, could provide advantages for prey with predator vision. They could look backward to assess the predator's location and then look forward again to escape, similar to how humans with predator-style vision might behave when being pursued.
             </li>
           </ul>
 
           <p>
-            Furthermore, in this initial work, we only investigate a discrete set of vision fields, however a similar
-            setup could also be used to instead optimise the vision fields for each agent's goal of evading/hunting
+            Furthermore, in this initial work, we only investigate a discrete set of vision fields. However, a similar
+            setup could also be used to instead optimise the vision fields for each agent's goal of evading/hunting,
             given some physical constraints.
           </p>
 
