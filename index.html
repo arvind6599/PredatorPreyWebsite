@@ -504,7 +504,7 @@
           </p>
         </div>
         <!-- Creating environments. -->
-        <h3 class="title is-4">III-I. Environments</h3>
+        <h3 class="title is-4">III-A. Environments</h3>
         <div class="content has-text-justified">
           <p>
             We present a diverse set of simulated environments aimed at replicating various scenarios involving predator-prey interactions.
@@ -591,7 +591,7 @@
     <div class="columns is-centered">
       <div class="column is-full-width">
         <!-- Creating agents. -->
-        <h3 class="title is-4">III-II. Predator and Prey Agents</h3>
+        <h3 class="title is-4">III-B. Predator and Prey Agents</h3>
         <div class="content has-text-justified">
           <p>
             Whilst the prey and predator have opposing objectives, they demonstrate similar characteristics. Both agents operate
@@ -664,7 +664,7 @@
         <!--/ Vision sensor. -->
 
         <!-- Training. -->
-        <h3 class="title is-4">III-III. Setting up Reinforcement Learning Training</h3>
+        <h3 class="title is-4">III-C. Setting up Reinforcement Learning Training</h3>
         <div class="content has-text-justified">
           <p>
             The setting of predator-prey dynamics can be framed as a two-player dynamic game <a href="https://ieeexplore.ieee.org/abstract/document/7868186">[6]</a>,
@@ -765,15 +765,81 @@
         <br>
 
         <!-- Inference environments. -->
-        <h3 class="title is-4">IV-I. Experimental Setup</h3>
+        <h3 class="title is-4">IV-A. Experimental Setup</h3>
+
         <br/>
         <div class="content has-text-justified">
           <div class="container">
             <!-- <h2 class="title is-2 has-text-centered">Model and Behavior Parameters</h2> -->
                 <h3 class="title is-5">Agent parameters</h3>
+
+                <div class="box">
+                  <div class="table-container">
+                      <table class="table" align="center">
+                          <thead>
+                              <tr>
+                                  <th></th>
+                                  <th>Rays per direction</th>
+                                  <th>Depth rays per direction</th>
+                                  <th>Max ray degrees</th>
+                                  <th>Ray length</th>
+                                  <th>Observation stacks</th>
+                                  <th>Field of view</th>
+                                  <th>Binocular region</th>
+                                  <th>Maximum movement speed</th>
+                                  <th>Maximum rotation speed</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr>
+                                  <td><b>Prey-style</b></td>
+                                  <td>30</td>
+                                  <td>4</td>
+                                  <td>160</td>
+                                  <td>15</td>
+                                  <td>5</td>
+                                  <td><em>320°</em></td>
+                                  <td><em>43°</em></td>
+                                  <td><em>8</em></td>
+                                  <td><em>8</em></td>
+                              </tr>
+                              <tr>
+                                  <td><b>Predator-style</b></td>
+                                  <td>30</td>
+                                  <td>20</td>
+                                  <td>85</td>
+                                  <td>15</td>
+                                  <td>5</td>
+                                  <td><em>170°</em></td>
+                                  <td><em>113°</em></td>
+                                  <td><em>6</em></td>
+                                  <td><em>2</em></td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+                  <div align="center">
+                  <font size="-0.7">
+                    <span style="font-weight:normal">
+                      Parameters of the prey and predator-style vision sensors
+                  </span>
+                  </font>
+                  </div>
+                </div>
+
+                <p>Firstly, we establish two distinct categories of vision: prey-style and predator-style.
+                  This can be seen in the table above.
+                  Prey-style vision emphasizes a broad field of view while limiting the binocular region,
+                  whereas predator-style vision exhibits the opposite characteristics. Additionally, we
+                  augment the agents' abilities with observation stacks, which simulate a brief memory of
+                  recent events, and this augmentation is applied to both agents.
+                </p>
+
                 <p>
-                  \lars{We should also discuss the specific stuff like movement speed here}
-                  Behavioural and vision params. rotation and movement speeds and specific params of sensors.
+                  When it comes to the actual
+                  process of making deductions, we designate the maximum speed of the prey to be greater
+                  than that of the predator. We adopt this approach because we are of the opinion that
+                  higher speeds during inference will enhance the visibility of chasing patterns.
                 </p>
 
                 <div class="columns is-centered">
@@ -791,65 +857,22 @@
                   </div>
                 </div>
 
+                <p>
+                  As depicted in the figure above, we proceed to train each feasible combination of
+                  vision types for both the predator and the prey. These trained models are subsequently employed
+                  for making inferences.
+                </p>
 
           </div>
         </div>
-
-        <div class="box">
-          <div class="table-container">
-              <table class="table" align="center">
-                  <thead>
-                      <tr>
-                          <th></th>
-                          <th>Rays per direction</th>
-                          <th>Depth rays per direction</th>
-                          <th>Max ray degrees</th>
-                          <th>Ray length</th>
-                          <th>Observation stacks</th>
-                          <th>Field of view</th>
-                          <th>Binocular region</th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      <tr>
-                          <td><b>Prey-style</b></td>
-                          <td>30</td>
-                          <td>4</td>
-                          <td>160</td>
-                          <td>15</td>
-                          <td>5</td>
-                          <td><em>320°</em></td>
-                          <td><em>43°</em></td>
-                      </tr>
-                      <tr>
-                          <td><b>Predator-style</b></td>
-                          <td>30</td>
-                          <td>20</td>
-                          <td>85</td>
-                          <td>15</td>
-                          <td>5</td>
-                          <td><em>170°</em></td>
-                          <td><em>113°</em></td>
-                      </tr>
-                  </tbody>
-              </table>
-          </div>
-          <div align="center">
-          <font size="-0.7">
-            <span style="font-weight:normal">
-              Parameters of the prey and predator-style vision sensors
-          </span>
-          </font>
-          </div>
-        </div>
-
 
         <div class="content has-text-justified">
           <div class="container">
 
             <h3 class="title is-5">Training details</h3>
             <p>
-              The agents are trained on all environments mentioned in the methodology section in parallel. By having environments of different difficulties,
+              The agents are trained on all environments mentioned in the methodology section in parallel, using the parameters mentioned in the agent configuration sections
+              The only difference is that the speed of the prey is now set to \(5.5\). By having environments of different difficulties,
               a speed-up in training can be observed, similar as in curriculum learning <a href="https://dl.acm.org/doi/abs/10.1145/1553374.1553380?casa_token=nh2ZrojaWoAAAAAA:ch-UtBUm-jXdt36EJoGrONsdXTfKYTOF9g3wpMqUjykIzeeCv2_d4p2hoGlyuJRGTlWCdZyWmPVmmg">[13]</a>,
               <a href="https://dl.acm.org/doi/abs/10.5555/3455716.3455897">[14]</a>. Furthermore, three agents of each type were present
               in each environment. Although this could make the environment unstable due to partial observability, it greatly enhances training speed.
@@ -975,7 +998,7 @@
 
         <!-- Results. -->
         <!-- Include median_time_survived.html using an iframe -->
-        <h3 class="title is-4">IV-II.Results</h3>
+        <h3 class="title is-4">IV-B. Results</h3>
         <div class="content has-text-justified">
           <div class="content has-text-justified">
             <div class="container">
@@ -1061,7 +1084,7 @@
         </div>
 
         <!-- Limitations. -->
-        <h3 class="title is-4">V-I. Limitations and Future Work</h3>
+        <h3 class="title is-4">V-A. Limitations and Future Work</h3>
         <div class="content has-text-justified">
           <p>
             Whilst we observe many interesting behaviors and were able to obtain promising initial results, it's important
