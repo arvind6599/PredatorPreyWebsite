@@ -682,7 +682,7 @@
 
           <p>
             $$
-              G_\text{pred} = \sum_{i=1}^{T}\left[\frac{\mathbb{1}(\text{prey caught at } t)}{N_\text{prey}} - \frac{1}{T}\right]
+              G_\text{pred} = \sum_{i=1}^{T}\left[\frac{𝟙(\text{prey caught at } t)}{N_\text{prey}} - \frac{1}{T}\right]
             $$
             $$
               G_\text{prey} = - G_\text{pred}
@@ -872,7 +872,7 @@
             <h3 class="title is-5">Training details</h3>
             <p>
               The agents are trained on all environments mentioned in the methodology section in parallel, using the parameters mentioned in the agent configuration sections
-              The only difference is that the speed of the prey is now set to \(5.5\). By having environments of different difficulties,
+              The only difference is that the maximum speed of the prey is now set to \(5.5\). By having environments of different difficulties,
               a speed-up in training can be observed, similar as in curriculum learning <a href="https://dl.acm.org/doi/abs/10.1145/1553374.1553380?casa_token=nh2ZrojaWoAAAAAA:ch-UtBUm-jXdt36EJoGrONsdXTfKYTOF9g3wpMqUjykIzeeCv2_d4p2hoGlyuJRGTlWCdZyWmPVmmg">[13]</a>,
               <a href="https://dl.acm.org/doi/abs/10.5555/3455716.3455897">[14]</a>. Furthermore, three agents of each type were present
               in each environment. Although this could make the environment unstable due to partial observability, it greatly enhances training speed.
@@ -1022,15 +1022,12 @@
                   <p>
                     The average returns during training for various vision configurations of predator and prey agents are illustrated in the left figure. It is
                     observed that the PredatorBoth vision exhibits a slower learning rate compared to other configurations, likely due to the reduced field of
-                    view when both agents have predator vision. However, this effect diminishes over time. Conversely, the SwappedVision configuration stands out
-                     as advantageous for the predators, attributed to the vision setup that grants predators a wider field of view while restricting the prey's vision.
-                     Despite the impressive hunting prowess of predators, prey agents still demonstrate substantial learning progress. This finding highlights the
-                     adaptability and refinement of evasive maneuvers by prey agents, even in the presence of highly skilled predators.
+                    view when both agents have predator vision. However, this effect diminishes over time.
                   </p>
                   <p>
                     In the right figure, we analyze the episode length throughout the training process. Interestingly, we consistently observe a decreasing trend in episode
-                    length across all configurations. This reduction reflects a notable enhancement in the predator's decision-making capabilities and their aptitude for
-                    achieving goals within shorter timeframes.
+                    length across all configurations. However, this does not indicate that the prey has not learned anything, but rather only shows that the predator dominates
+                    in this specific configuration.
                   </p>
                   <br>
             </div>
