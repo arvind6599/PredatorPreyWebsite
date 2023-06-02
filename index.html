@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
 <html>
 <head>
   <meta charset="utf-8">
@@ -164,7 +166,7 @@
 
 
 <!-- USEFUL SECTION - carousel of videos, can add captions too -->
-<!--section class="hero is-light is-small">
+<!-- section class="hero is-light is-small">
   <div class="hero-body">
     <div class="container">
       <div id="results-carousel" class="carousel results-carousel">
@@ -224,7 +226,9 @@
       </div>
     </div>
   </div>
-</section-->
+</section -->
+
+
 
 
 <section class="section hero is-light">
@@ -384,7 +388,52 @@
     </div>
     <!--/ Related work. -->
   </div>
+</section>
 
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item">
+          <a href="static/images/training/control_train.jpg" data-lightbox="image">
+            <img src="static/images/training/control_train.jpg" alt="Image 1">
+          </a>
+          <div class="caption">
+            <h2 class="subtitle has-text-centered">Control Environment</h2>
+            <p class="subcaption has-text-centered">Screenshot of Training Environment 1</p>
+          </div>
+        </div>
+        <div class="item">
+          <a href="static/images/training/forrest.jpg" data-lightbox="image">
+            <img src="static/images/training/forrest.jpg" alt="Image 2">
+          </a>
+          <div class="caption">
+            <h2 class="subtitle has-text-centered">Forrest Environment</h2>
+            <p class="subcaption has-text-centered">Screenshot of Training Environment 2</p>
+          </div>
+        </div>
+        <div class="item">
+          <a href="static/images/training/holes.jpg" data-lightbox="image">
+            <img src="static/images/training/holes.jpg" alt="Image 3">
+          </a>
+          <div class="caption">
+            <h2 class="subtitle has-text-centered">Escape Room Environment</h2>
+            <p class="subcaption has-text-centered">Screenshot of Training Environment 3</p>
+          </div>
+        </div>
+        <div class="item">
+          <a href="static/images/training/rocky.jpg" data-lightbox="image">
+            <img src="static/images/training/rocky.jpg" alt="Image 4">
+          </a>
+          <div class="caption">
+            <h2 class="subtitle has-text-centered">Rocky Environment</h2>
+            <p class="subcaption has-text-centered">Screenshot of Training Environment 4</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 
@@ -441,12 +490,127 @@
 
 
 
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item">
+          <a href="./static/images/inference/control.jpg" data-lightbox="image">
+            <img src="./static/images/inference/control.jpg" alt="Control Image">
+          </a>
+          <div class="caption">
+            <h2 class="subtitle has-text-centered">Control Environment</h2>
+            <p class="subcaption has-text-centered">Screenshot of Training Environment: Control</p>
+          </div>
+        </div>
+        <div class="item">
+          <a href="./static/images/inference/hide.jpg" data-lightbox="image">
+            <img src="./static/images/inference/hide.jpg" alt="Hide Image">
+          </a>
+          <div class="caption">
+            <h2 class="subtitle has-text-centered">Hide Environment</h2>
+            <p class="subcaption has-text-centered">Screenshot of Training Environment: Hide</p>
+          </div>
+        </div>
+        <div class="item">
+          <a href="./static/images/inference/seek.jpg" data-lightbox="image">
+            <img src="./static/images/inference/seek.jpg" alt="Seek Image">
+          </a>
+          <div class="caption">
+            <h2 class="subtitle has-text-centered">Seek Environment</h2>
+            <p class="subcaption has-text-centered">Screenshot of Training Environment: Seek</p>
+          </div>
+        </div>
+        <div class="item">
+          <a href="./static/images/inference/rocks.jpg" data-lightbox="image">
+            <img src="./static/images/inference/rocks.jpg" alt="Rocks Image">
+          </a>
+          <div class="caption">
+            <h2 class="subtitle has-text-centered">Rocks Environment</h2>
+            <p class="subcaption has-text-centered">Screenshot of Training Environment: Rocks</p>
+          </div>
+        </div>
+        <div class="item">
+          <a href="./static/images/inference/trees.jpg" data-lightbox="image">
+            <img src="./static/images/inference/trees.jpg" alt="Trees Image">
+          </a>
+          <div class="caption">
+            <h2 class="subtitle has-text-centered">Trees Environment</h2>
+            <p class="subcaption has-text-centered">Screenshot of Training Environment: Trees</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
 <section class="section">
   <div class="container is-max-desktop">
     <!-- Experiments. -->
     <div class="columns is-centered">
       <div class="column is-full-width">
         <h2 class="title is-3">Experiments</h2>
+
+        <!-- Inference environments. -->
+        <h3 class="title is-4">Training setup</h3>
+        <p>
+          Our project employs a deep learning architecture based on a convolutional neural network (CNN).
+        </p>
+        <br/>
+        <div class="content has-text-justified">
+          <div class="container">
+            <!-- <h2 class="title is-2 has-text-centered">Model and Behavior Parameters</h2> -->
+            <div class="columns">
+              <div class="column">
+                <h3 class="title is-5">Model Architecture</h3>
+                <p>
+                  Our project employs a deep learning architecture based on a convolutional neural network (CNN).
+                </p>
+              </div>
+              <div class="column">
+                <h3 class="title is-5">Behavior Settings</h3>
+                <p>
+                  The behavior of our model is controlled by a set of adjustable parameters to fine-tune its performance and adaptability.
+                  These parameters include:
+                  <ul>
+                    <li>Learning Rate: Determines the step size at each iteration of the optimization algorithm.</li>
+                    <li>Batch Size: Specifies the number of samples processed in each training iteration.</li>
+                  </ul>
+                  By adjusting these parameters, different configurations of the model can be tested and optimized for specific tasks or datasets.
+                </p>
+              </div>
+              <div class="column">
+                <h3 class="title is-5">Behavior Settings</h3>
+                <p>
+                  The behavior of our model is controlled by a set of adjustable parameters to fine-tune its performance and adaptability.
+                  These parameters include:
+                  <ul>
+                    <li>Learning Rate: Determines the step size at each iteration of the optimization algorithm.</li>
+                    <li>Batch Size: Specifies the number of samples processed in each training iteration.</li>
+                  </ul>
+                  By adjusting these parameters, different configurations of the model can be tested and optimized for specific tasks or datasets.
+                </p>
+              </div>
+              <div class="column">
+                <h3 class="title is-5">Behavior Settings</h3>
+                <p>
+                  The behavior of our model is controlled by a set of adjustable parameters to fine-tune its performance and adaptability.
+                  These parameters include:
+                  <ul>
+                    <li>Learning Rate: Determines the step size at each iteration of the optimization algorithm.</li>
+                    <li>Batch Size: Specifies the number of samples processed in each training iteration.</li>
+                  </ul>
+                  By adjusting these parameters, different configurations of the model can be tested and optimized for specific tasks or datasets.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br/>
+
+        
 
         <!-- Inference environments. -->
         <h3 class="title is-4">Inference environments</h3>
@@ -457,8 +621,10 @@
         </div>
         <br/>
         <!--/ Inference environments. -->
-
+        
         <!-- Results. -->
+        <!-- Include median_time_survived.html using an iframe -->
+        <iframe src="./static/figures/median_time_survived.html" frameborder="0" width="100%" height="500px"></iframe>
         <h3 class="title is-4">Results</h3>
         <div class="content has-text-justified">
           <p>
