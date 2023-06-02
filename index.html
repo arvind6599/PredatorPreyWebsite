@@ -410,32 +410,31 @@
 </section>
 
 
-
 <section class="section">
   <div class="container is-max-desktop">
     <!-- Method. -->
     <div class="columns is-centered">
       <div class="column is-full-width">
         <h2 class="title is-3">Method</h2>
-
-        <p>
-          In this section, we present the methodology utilized for this paper. We first discuss the environment setup,
-          after which we detail how the predator and prey agents are created. Finally, we talk about how the agents are optimized.
-        </p>
-        <p>
-          We create a 3D environment using the Unity game development engine <a href="https://unity.com/">[3]</a>. The selection of Unity as the engine
-          for creating the environment instead of a different simulator is motivated by several key factors. Mainly, Unity's ML-Agents
-          package <a href="https://arxiv.org/abs/1809.02627">[4]</a> offers support for the OpenAI Gym framework
-          <a href="https://arxiv.org/abs/1809.02627">[5]</a>, which is widely used in
-          reinforcement learning research. This way, Unity enables interaction between the environment and the learning algorithms,
-          allowing for efficient experimentation and evaluation of predator-prey agents.
-        </p>
-        <p>
-          Moreover, the engine offers a wide range of built-in tools, such as physics simulations, ray tracing, and collision.
-          Finally, Unity provides a user-friendly and intuitive development environment, making it accessible to researchers with
-           varying levels of expertise.
-        </p>
-        <br>
+        <div class="content has-text-justified">
+          <p>
+            In this section, we present the methodology utilized for this paper. We first discuss the environment setup,
+            after which we detail how the predator and prey agents are created. Finally, we talk about how the agents are optimized.
+          </p>
+          <p>
+            We create a 3D environment using the Unity game development engine <a href="https://unity.com/">[3]</a>. The selection of Unity as the engine
+            for creating the environment instead of a different simulator is motivated by several key factors. Mainly, Unity's ML-Agents
+            package <a href="https://arxiv.org/abs/1809.02627">[4]</a> offers support for the OpenAI Gym framework
+            <a href="https://arxiv.org/abs/1809.02627">[5]</a>, which is widely used in
+            reinforcement learning research. This way, Unity enables interaction between the environment and the learning algorithms,
+            allowing for efficient experimentation and evaluation of predator-prey agents.
+          </p>
+          <p>
+            Moreover, the engine offers a wide range of built-in tools, such as physics simulations, ray tracing, and collision.
+            Finally, Unity provides a user-friendly and intuitive development environment, making it accessible to researchers with
+             varying levels of expertise.
+          </p>
+        </div>
         <!-- Creating environments. -->
         <h3 class="title is-4">Environments</h3>
         <div class="content has-text-justified">
@@ -562,9 +561,11 @@
           </p>
           <p>
             To control the region of binocular vision, we have extended this sensor to incorporate a parameter representing
-            the number of depth rays. Consequently, we exclude depth information for any rays falling outside this region by
-            assigning a distance of \(-1)\. By using this modified Ray Perception sensor, we define two distinct sensor types:
-            predator-style and prey-style, which draw inspiration from the characteristic vision traits observed in real-world
+            the number of depth rays. We make the simple assumption that agents can see the presence and type
+            of an object across their entire field of view, but only have depth perception in their binocular region.
+            Consequently, we exclude depth information for any rays falling outside this region by
+            assigning a distance of \(-1\). Using this modified Ray Perception sensor, we define two distinct sensor types:
+            <em>predator-style</em> and <em>prey-style</em>, which draw inspiration from the characteristic vision traits observed in real-world
             predators and prey, respectively.
           </p>
           <br>
