@@ -679,50 +679,27 @@
         <div class="content has-text-justified">
           <div class="container">
             <!-- <h2 class="title is-2 has-text-centered">Model and Behavior Parameters</h2> -->
-            <div class="columns">
-              <div class="column">
                 <h3 class="title is-5">Training details</h3>
                 <p>
                   The predator and prey were each trained self-play for \(10^7\) steps, where one step corresponds to
-                  one frame in the simulation. The swap between the frozen training teams happens every \(3 \cdot 105\) training steps. At
+                  one frame in the simulation. The swap between the frozen training teams happens every \(3 \cdot 10^5\) training steps. At
                   each episode, the agent is spawned with a random rotation the y-axis, and the maximum episode duration is \(10^4\).
                   The model will play against the most recent version of the agent \(80\%\) of the time. The models both consist of
                   a \(3\) hidden-layer MLP with \(512\) neurons each with batch at each layer. The model is optimized using
                   PPO with the Adam (La: CITE) optimizer with a learning of \(0.0003\) and no decay. Finally, the buffer sizes of both
                   agents are set to \(40960\).
                 </p>
-              </div>
-              <div class="column">
                 <h3 class="title is-5">Agent parameters</h3>
                 <p>
                   Behavioural and vision params. rotation and movement speeds and specific params of sensors.
                 </p>
+
                 <div class="box">
                   <img src="static/images/configs_table.png" alt="Vision sensor configurations">
                 </div>
-              </div>
-              <div class="column">
-                <h3 class="title is-5">Hardware</h3>
-                <p>
-                  Any model has been trained on Linux and Python 3.7. The device uses a CUDA-enabled NVIDIA
-                  V100 PCIe 32 GB GPU with 7TFLOPS, a Xeon-Gold processor running with a 2.1 GHz clock speed, and 16GB of
-                  RAM. Our method is implemented with Unity’s ML-Agents package and PyTorch.
-                </p>
-                <h3 class="title is-5">Environments</h3>
-                <p>
-                  The behavior of our model is controlled by a set of adjustable parameters to fine-tune its performance and adaptability.
-                  These parameters include:
-                  <ul>
-                    <li>Learning Rate: Determines the step size at each iteration of the optimization algorithm.</li>
-                    <li>Batch Size: Specifies the number of samples processed in each training iteration.</li>
-                  </ul>
-                  By adjusting these parameters, different configurations of the model can be tested and optimized for specific tasks or datasets.
-                </p>
-              </div>
-            </div>
+
           </div>
         </div>
-        <br/>
 
         <div class="box">
           <div class="table-container">
@@ -765,13 +742,30 @@
           </div>
         </div>
 
+
+        <div class="content has-text-justified">
+          <div class="container">
+            <h3 class="title is-5">Environments</h3>
+            <p>
+              The behavior of our model is controlled by a set of adjustable parameters to fine-tune its performance and adaptability.
+              These parameters include:
+              <ul>
+                <li>Learning Rate: Determines the step size at each iteration of the optimization algorithm.</li>
+                <li>Batch Size: Specifies the number of samples processed in each training iteration.</li>
+              </ul>
+              By adjusting these parameters, different configurations of the model can be tested and optimized for specific tasks or datasets.
+            </p>
+
+          </div>
+        </div>
+
+        <br/>
+
+
       </div>
     </div>
-    <!--/ Experiments. -->
   </div>
 </section>
-
-
 
 <section class="hero is-light is-small">
   <div class="hero-body">
@@ -827,6 +821,31 @@
     <h6 class="subtitle has-text-centered">
       Environments used for inference
     </h6>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Experiments. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+
+        <div class="content has-text-justified">
+          <div class="container">
+            <h3 class="title is-5">Hardware</h3>
+            <p>
+              The models were trained using a CUDA-enabled NVIDIA
+              V100 PCIe 32 GB GPU with 7TFLOPS, a Xeon-Gold processor running with a 2.1 GHz clock speed, and 16GB of
+              RAM. Our method is implemented with Unity’s ML-Agents package and PyTorch running on Linux with Python 3.7.
+            </p>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!--/ Experiments. -->
   </div>
 </section>
 
