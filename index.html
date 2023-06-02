@@ -264,15 +264,18 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            This research project investigates how different
-            vision fields affect predator-prey interactions. By simulating
-            simplified environments and training agents with reinforcement
-            learning, we hope to identify trends that emerge in the
-            strategies and effectiveness of trained predator and prey agents
-            which use varying vision fields. Our methods can help gain
-            new insights into the complex interactions between predators
-            and prey, whilst improving upon existing literature regarding
-            predator-prey simulations.
+            This study investigates how different vision fields affect
+            predator-prey interactions. By simulating simplified environments
+            and training agents with reinforcement learning, we
+            observe trends that emerge in the strategies and effectiveness
+            of trained predator and prey agents which use varying vision
+            fields. Our findings support our current understanding that
+            depth perception is very important for predators, whilst field
+            of view is crucial for prey. Our work improves upon existing
+            literature regarding predator-prey simulations. By implementing
+             some modifications to the setup, our approach enables
+            exploring the complex interactions between predators and prey
+            in new ways.
           </p>
         </div>
 
@@ -343,32 +346,22 @@
         <h2 class="title is-3" id="intro">I. Introduction</h2>
         <div class="content has-text-justified">
           <p>
-            Understanding the dynamics between predator-prey in in the natural world is a complex endeavor that
-            continues to intrigue researchers. These interactions, characterized by constant adaptation and evolution, offer valuable
-            insights into survival strategies employed by animals. Visual intelligence has emerged as a pivotal field of study, providing
-            a means to delve deeper into the perceptual and reactive abilities of animals within their environments. In this project, we
-            investigate the predator-prey setting, leveraging simplified environments and diverse vision fields to train agents and
-            unravel the underlying dynamics.
+            The natural world is full of fascinating and complex interactions between predators and prey, with each constantly
+            adapting and evolving to survive. As researchers seek to better understand these dynamics, visual intelligence has
+            emerged as a critical field of study, allowing us to gain new insights into how animals perceive and react to their
+            environments.
           </p>
           <p>
-            The core challenge that this paper addresses is comprehending the strategies and behaviors exhibited by predators
-            and prey in their engagements for different types of vision. To gain valuable insights into the survival tactics employed
-            during attacks or hunting endeavors, we employ a simulation of simplified scenarios within controlled environments. In
-            addressing this challenge, we adopt a novel approach that involves training agents using a diverse range of vision
-            fields, designed to represent distinct types of visions observed in nature. Furthermore, our investigation delves into
-            the psychology of chasing, exploring how prey agents can learn to exploit occlusions within their
-            environment to their advantage.
+            In this work, we investigate the role of vision in prey-predator settings by leveraging reinforcement learning
+            to train agents in simulated environments. Specifically, we are interested in how the field of view and the region of
+            binocular vision affect the strategies and effectiveness used by predators and prey to hunt or evade respectively.
+            We train predator and prey agents with varying vision fields in non-trivial environments with obstacles. The
+            vision fields we experiment with are inspired by typical real-world predators and prey.
           </p>
           <p>
-            To evaluate the effectiveness of our approach, we conduct extensive quantitative and qualitative evaluations of the
-            agent with different vision fields, which are optimized with reinforcement learning. We examine the emergent behaviors
-            exhibited by the trained agents and assess the impact of different vision fields on the success rates of both predators
-            and prey.
-          </p>
-          <p>
-            By analyzing the outcomes of these evaluations, we gain a deeper understanding of how variations in visual perception
-            can influence the performance and survival capabilities of agents within the predator-prey paradigm.
-            (La: Write more on results/conclusions/limitations)
+            To evaluate the effectiveness of our approach, we both quantitatively evaluate agent performance in new environments and qualitatively observe
+            the emergent strategies and behaviors of the agents under different configurations. Our work builds upon existing literature in this area to gain a deeper understanding of how differences in visual
+            perception can influence predator-prey interactions.
           </p>
         </div>
       </div>
@@ -424,7 +417,7 @@
        			</h5>
           </div>
           <p>
-            This work however is limited to a simplified 2D environment without incorporating vision.
+            However, this work is limited to a simplified 2D environment without incorporating vision.
           </p>
         </div>
       </div>
@@ -451,7 +444,7 @@
           </h5>
         </div>
          <p>
-           The study however does not explicitly explore the effects of varying the vision fields on the emergent behaviors of the agents.
+           However, this study does not explicitly explore the effects of varying the vision fields on the emergent behaviors of the agents.
          </p>
       </div>
     </div>
@@ -508,9 +501,9 @@
         <div class="content has-text-justified">
           <p>
             We present a diverse set of simulated environments aimed at replicating various scenarios involving predator-prey interactions.
-            Our objective is to foster a wide range of hunting behaviors for predators while prey organisms strive to survive. To achieve
+            Our objective is to foster a wide range of hunting behaviors for predators while prey aim to survive. To achieve
             this diversity, we incorporate obstacles such as trees and rocks within the environments. Additionally, we introduce walls along
-            the boundaries to confine the agents to the designated training area. This confinement allows us to concentrate the agents' actions
+            the boundaries to confine the agents to the designated training area. This confinement allows us to concentrate the actions of an agent
              and observations within a controlled environment.
           </p>
           <p>
@@ -668,8 +661,7 @@
         <div class="content has-text-justified">
           <p>
             The setting of predator-prey dynamics can be framed as a two-player dynamic game <a href="https://ieeexplore.ieee.org/abstract/document/7868186">[6]</a>,
-            <a href="https://epubs.siam.org/doi/pdf/10.1137/1.9781611971132.bm">[7]</a>. This game-theoretic
-            formulation captures the interactions and influence of the agents on the state of the game, providing a framework
+            <a href="https://epubs.siam.org/doi/pdf/10.1137/1.9781611971132.bm">[7]</a>. This formulation captures the interactions and influence of the agents on the state of the game, providing a framework
             for studying predator-prey dynamics based on a common utility function. The game is only played for a set number of
             steps, until it is terminated.
           </p>
@@ -708,7 +700,7 @@
           <p>
             Overall, the nature of the game poses additional challenges, as it suffers from many of the problems in
             competitive multi-agent learning <a href="https://link.springer.com/chapter/10.1007/978-3-642-14435-6_7">[8]</a>. Multi-agent reinforcement learning in competitive scenarios
-            poses several challenges <a href="https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=46662ca0627974ec3c3c038ccc78b2ef9ef92218">[9]</a>. This paper employs a prominent technique called "self-play"
+            poses several challenges <a href="https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=46662ca0627974ec3c3c038ccc78b2ef9ef92218">[9]</a>. In this paper, we employ a prominent technique called "self-play"
             <a href="https://proceedings.neurips.cc/paper/2020/file/172ef5a94b4dd0aa120c6878fc29f70c-Paper.pdf">[10]</a>, <a href="https://www.science.org/doi/pdf/10.1126/science.aar6404?casa_token=U6oPNZ67XRcAAAAA%3Ai-nCPopyruTropl7_QoP3RWxM93tlHd75lV826n7-8X5_XlX0EniJPBxQ9KnsNYUHSxFyeLGBa8juko&">[11]</a>
             to address these difficulties. The diagram below provides a high-level overview of this approach.
           </p>
@@ -1021,7 +1013,7 @@
                   </div>
                   <p>
                     The average returns during training for various vision configurations of predator and prey agents are illustrated in the left figure. It is
-                    observed that the PredatorBoth vision exhibits a slower learning rate compared to other configurations, likely due to the reduced field of
+                    observed that the PredatorBoth vision improves at a slower rate compared to other configurations, likely due to the reduced field of
                     view when both agents have predator vision. However, this effect diminishes over time.
                   </p>
                   <p>
@@ -1357,39 +1349,27 @@
         <h2 class="title is-3" id="conclusion">V. Conclusions and Limitations</h2>
 
         <div class="content has-text-justified">
-          <p>With this work, we have developed a new way to investigate the role of vision in simulated predator-prey
-            interactions. Through our experiments where we vary the vision fields of predator and prey agents and train
-            them against each other using reinforcement learning, we are able to make the following overarching observations:</p>
-          <ul>
-              <li>Depth information seems to be crucial for predators. Even for prey, depth can act as an important cue but
-                to a lesser extent.</li>
-              <li>Wide field of view is crucial to prey. Whereas predators mainly need to look in the direction in which they
-                are moving at most times, prey needs both to see where they're going while also being able to sense predators in
-                their periphery to evade them.</li>
-              <li>Memory plays an important role in complementing visual perception in predator-prey interactions.</li>
-          </ul>
-          <p>These observations support our current understanding of why real-world predators and prey developed vision systems
-            that prioritized depth perception and field of view, respectively.</p>
+          <p>
+            Our work investigates the role of vision in simulated predator-prey interactions. By varying the vision fields of predator and prey agents and training them using reinforcement learning, we make the following observations:
+            <ul>
+              <li> Depth information is crucial for predators, while prey also benefit from depth perception to a lesser extent.
+              <li> Prey require a wide field of view to navigate and detect predators in their periphery, while predators mainly focus on the direction of their movement.
+              <li> Memory complements visual perception in predator-prey interactions.
+            </ul>
 
+            These observations support the understanding of why real-world predators prioritize depth perception and prey prioritize a wide field of view in their vision systems.
+            </p>
         </div>
 
         <!-- Limitations. -->
         <h3 class="title is-4">V-A. Limitations and Future Work</h3>
         <div class="content has-text-justified">
           <p>
-            Whilst we observe many interesting behaviors and were able to obtain promising initial results, it's important
-            to note there are many limitations to our approach. Real-life predator prey interactions are incredibly complex,
-            and it's almost impossible to capture all these complexities in a simple simulated environment such as this. The most
-            pertinent limitations and potential future work are as follows:
+            Despite interesting observations and promising initial results, our approach has several limitations due to the complex nature of real-life predator-prey interactions. Capturing all these complexities in a simple simulated environment like this is nearly impossible. The main limitations and areas for potential future work include:
           </p>
           <ul>
             <li>
-              The predator and prey agents exhibited seemingly untrained or random behaviour at times, indicating that the agents
-              needed to be trained further. For comparison, in OpenAI's hide and seek environment it took ~2.7 million <em>episodes</em> for
-              the seekers to learn to consistently chase the hiders, and they even used a curriculum learning approach to help facilitate
-              learning. Meanwhile our training ran for only ~10 million steps in total (~corresponds to an order of magnitude \(10^4\)
-              episodes). Whilst training at OpenAI's scale is of course not feasible, the agents would likely have benefited greatly
-              from further training or an alternative strategy such as curriculum learning.
+              The predator and prey agents sometimes displayed untrained or random behavior, suggesting a need for further training. OpenAI's hide and seek environment required approximately 2.7 million episodes for seekers to consistently chase hiders, even with the aid of a curriculum learning approach. Our training lasted only around 10 million steps (approximately \(10^4\) episodes). Although training on OpenAI's scale is not feasible, additional training or alternative strategies like curriculum learning would have likely benefitted the agents greatly.
             </li>
           </ul>
 
@@ -1397,13 +1377,7 @@
 
           <ul>
             <li>
-              As we observed, memory is crucial to complement vision in predator-prey scenarios, however our agents
-              had virtually no memory. Not only would the agents forget about an object as soon as it fell out of its
-              field of view, but since they didn't have any positional information they also couldn't plan a smarter
-              trajectory knowing where they'd been and what they'd seen (e.g. to avoid backing into a wall and not going
-              anywhere). To address this, we could increase the observation stack to give the agents more memory, and
-              potentially include past positional information as an additional observation. We could also try experimenting
-              with a recurrent neural network instead of a vanilla multi-layer perceptron to better model the temporal information.
+              Memory is essential for complementing vision in predator-prey scenarios, but our agents lacked memory. They forgot objects as soon as they left their field of view and had no positional information for planning trajectories. To address this, we can increase the observation stack to provide more memory and consider including past positional information. Additionally, using a recurrent neural network instead of a multi-layer perceptron could better capture temporal information.
             </li>
           </ul>
 
@@ -1435,19 +1409,13 @@
 
           <ul>
             <li>
-              Another major simplification we made is in terms of the action space of the agents. Our agents can only move
-              backward/forwards or rotate, however, there are many more degrees of freedom for real-life predators and prey,
-              some of which could prove very advantageous in such scenarios. For example, in reality, it would be possible for
-              an agent to turn its head to see in a different direction from where it's moving. Having this additional degree of
-              freedom coupled with memory could allow the prey with predator vision to look backward, gauge where the predator is,
-              and then look forward again to run away — similar to how we as humans (who have predator-style vision) might behave
-              when being chased.
+              We simplified the action space for our agents by restricting them to backward/forward movement and rotation. In reality, predators and prey have more degrees of freedom, such as the ability to turn their heads and look in different directions while moving. This additional freedom, combined with memory, could provide advantages for prey with predator vision. They could look backward to assess the predator's location and then look forward again to escape, similar to how humans with predator-style vision might behave when being pursued.
             </li>
           </ul>
 
           <p>
-            Furthermore, in this initial work, we only investigate a discrete set of vision fields, however a similar
-            setup could also be used to instead optimise the vision fields for each agent's goal of evading/hunting
+            Furthermore, in this initial work, we only investigate a discrete set of vision fields. However, a similar
+            setup could also be used to instead optimise the vision fields for each agent's goal of evading/hunting,
             given some physical constraints.
           </p>
 
@@ -1720,7 +1688,9 @@
         <div class="content">
           <h6 class="title is-6">Individual Contributions</h6>
           <p>
-            Individual contributions here
+            L.Q. primarily set up the environment and agents. S.M. primarily implemented the modified ray perception sensor. A.M. primarily conducted training and experiments.
+            All three of us wrote the report, worked on the presentation. Overall, we contributed to the project equally.
+
           </p>
           <p><em>
             This website is based on the <a href="https://github.com/nerfies/nerfies.github.io" target="_blank">Nerfies website template</a>,
