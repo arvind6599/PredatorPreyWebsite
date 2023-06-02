@@ -46,54 +46,6 @@
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
-  <script>
-
-  document.addEventListener('DOMContentLoaded', () => {
-    // Functions to open and close a modal
-    function openModal($el) {
-      $el.classList.add('is-active');
-    }
-
-    function closeModal($el) {
-      $el.classList.remove('is-active');
-    }
-
-    function closeAllModals() {
-      (document.querySelectorAll('.modal') || []).forEach(($modal) => {
-        closeModal($modal);
-      });
-    }
-
-    // Add a click event on buttons to open a specific modal
-    (document.querySelectorAll('.js-modal-trigger') || []).forEach(($trigger) => {
-      const modal = $trigger.dataset.target;
-      const $target = document.getElementById(modal);
-
-      $trigger.addEventListener('click', () => {
-        openModal($target);
-      });
-    });
-
-    // Add a click event on various child elements to close the parent modal
-    (document.querySelectorAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button') || []).forEach(($close) => {
-      const $target = $close.closest('.modal');
-
-      $close.addEventListener('click', () => {
-        closeModal($target);
-      });
-    });
-
-    // Add a keyboard event to close all modals
-    document.addEventListener('keydown', (event) => {
-      const e = event || window.event;
-
-      if (e.keyCode === 27) { // Escape key
-        closeAllModals();
-      }
-    });
-  });
-
-  </script>
 </head>
 <body>
 
@@ -425,6 +377,7 @@
   </div>
 </section>
 
+
 <section class="section">
   <div class="container is-max-desktop">
     <!-- Related work. -->
@@ -582,82 +535,42 @@
   </div>
 </section>
 
-<div id="modal-train-control" class="modal">
-  <div class="modal-background"></div>
-
-  <div class="modal-content">
-    <p class="image">
-      <img src="static/images/training/control_train.jpg" alt="Image 1">
-      <!-- Your content -->
-    </p>
-  </div>
-
-  <button class="modal-close is-large" aria-label="close"></button>
-</div>
-<div id="modal-train-forest" class="modal">
-  <div class="modal-background"></div>
-
-  <div class="modal-content">
-    <p class="image">
-      <img src="static/images/training/forrest.jpg" alt="Image 1">
-      <!-- Your content -->
-    </p>
-  </div>
-
-  <button class="modal-close is-large" aria-label="close"></button>
-</div>
-<div id="modal-train-rocky" class="modal">
-  <div class="modal-background"></div>
-
-  <div class="modal-content">
-    <p class="image">
-      <img src="static/images/training/rocky.jpg" alt="Image 1">
-      <!-- Your content -->
-    </p>
-  </div>
-
-  <button class="modal-close is-large" aria-label="close"></button>
-</div>
-<div id="modal-train-escape" class="modal">
-  <div class="modal-background"></div>
-
-  <div class="modal-content">
-    <p class="image">
-      <img src="static/images/training/holes.jpg" alt="Image 1">
-      <!-- Your content -->
-    </p>
-  </div>
-
-  <button class="modal-close is-large" aria-label="close"></button>
-</div>
 
 <section class="hero is-light is-small">
   <div class="hero-body">
     <div class="container">
       <div id="results-carousel" class="carousel results-carousel">
-        <div class="item js-modal-trigger" data-target="modal-train-control">
+        <div class="item">
+          <a href="static/images/training/control_train.jpg" data-lightbox="image">
             <img src="static/images/training/control_train.jpg" alt="Image 1">
+          </a>
           <div class="caption">
             <h2 class="subtitle has-text-centered"><font size="-0.7">Control</font></h2>
             <p class="subcaption has-text-centered">Screenshot of Training Environment 1</p>
           </div>
         </div>
-        <div class="item js-modal-trigger" data-target="modal-train-forest">
+        <div class="item">
+          <a href="static/images/training/forrest.jpg" data-lightbox="image">
             <img src="static/images/training/forrest.jpg" alt="Image 2">
+          </a>
           <div class="caption">
             <h2 class="subtitle has-text-centered"><font size="-0.7">Forest</font></h2>
             <p class="subcaption has-text-centered">Screenshot of Training Environment 2</p>
           </div>
         </div>
-        <div class="item js-modal-trigger" data-target="modal-train-escape">
+        <div class="item">
+          <a href="static/images/training/holes.jpg" data-lightbox="image">
             <img src="static/images/training/holes.jpg" alt="Image 3">
+          </a>
           <div class="caption">
             <h2 class="subtitle has-text-centered"><font size="-0.7">Escape Room</font></h2>
             <p class="subcaption has-text-centered">Screenshot of Training Environment 3</p>
           </div>
         </div>
-        <div class="item js-modal-trigger" data-target="modal-train-rocky">
+        <div class="item">
+          <a href="static/images/training/rocky.jpg" data-lightbox="image">
             <img src="static/images/training/rocky.jpg" alt="Image 4">
+          </a>
           <div class="caption">
             <h2 class="subtitle has-text-centered"><font size="-0.7">Rocky</font></h2>
             <p class="subcaption has-text-centered">Screenshot of Training Environment 4</p>
@@ -971,91 +884,50 @@
   </div>
 </section>
 
-<div id="modal-test-control" class="modal">
-  <div class="modal-background"></div>
-
-  <div class="modal-content">
-    <p class="image">
-      <img src="static/images/inference/control.jpg" alt="Image 1">
-      <!-- Your content -->
-    </p>
-  </div>
-</div>
-<div id="modal-test-hide" class="modal">
-  <div class="modal-background"></div>
-
-  <div class="modal-content">
-    <p class="image">
-      <img src="static/images/inference/hide.jpg" alt="Image 1">
-      <!-- Your content -->
-    </p>
-  </div>
-</div>
-<div id="modal-test-seek" class="modal">
-  <div class="modal-background"></div>
-
-  <div class="modal-content">
-    <p class="image">
-      <img src="static/images/inference/seek.jpg" alt="Image 1">
-      <!-- Your content -->
-    </p>
-  </div>
-</div>
-<div id="modal-test-tree" class="modal">
-  <div class="modal-background"></div>
-
-  <div class="modal-content">
-    <p class="image">
-      <img src="static/images/inference/trees.jpg" alt="Image 1">
-      <!-- Your content -->
-    </p>
-  </div>
-</div>
-<div id="modal-test-rock" class="modal">
-  <div class="modal-background"></div>
-
-  <div class="modal-content">
-    <p class="image">
-      <img src="static/images/inference/rocks.jpg" alt="Image 1">
-      <!-- Your content -->
-    </p>
-  </div>
-</div>
-
 <section class="hero is-light is-small">
   <div class="hero-body">
     <div class="container">
       <div id="results-carousel" class="carousel results-carousel">
-        <div class="item js-modal-trigger" data-target="modal-test-control">
+        <div class="item">
+          <a href="./static/images/inference/control.jpg" data-lightbox="image">
             <img src="./static/images/inference/control.jpg" alt="Control Image">
+          </a>
           <div class="caption">
             <h2 class="subtitle has-text-centered"><font size="-0.7">Control</font></h2>
             <p class="subcaption has-text-centered">Screenshot of Training Environment: Control</p>
           </div>
         </div>
-        <div class="item js-modal-trigger" data-target="modal-test-hide">
+        <div class="item">
+          <a href="./static/images/inference/hide.jpg" data-lightbox="image">
             <img src="./static/images/inference/hide.jpg" alt="Hide Image">
+          </a>
           <div class="caption">
             <h2 class="subtitle has-text-centered"><font size="-0.7">Hide</font></h2>
             <p class="subcaption has-text-centered">Screenshot of Training Environment: Hide</p>
           </div>
         </div>
-        <div class="item js-modal-trigger" data-target="modal-test-seek">
+        <div class="item">
+          <a href="./static/images/inference/seek.jpg" data-lightbox="image">
             <img src="./static/images/inference/seek.jpg" alt="Seek Image">
+          </a>
           <div class="caption">
             <h2 class="subtitle has-text-centered"><font size="-0.7">Seek</font></h2>
             <p class="subcaption has-text-centered">Screenshot of Training Environment: Seek</p>
           </div>
         </div>
-        <div class="item js-modal-trigger" data-target="modal-test-rock">
+        <div class="item">
+          <a href="./static/images/inference/rocks.jpg" data-lightbox="image">
             <img src="./static/images/inference/rocks.jpg" alt="Rocks Image">
+          </a>
           <div class="caption">
             <h2 class="subtitle has-text-centered"><font size="-0.7">Rocks</font></h2>
             <p class="subcaption has-text-centered">Screenshot of Training Environment: Rocks</p>
           </div>
         </div>
-        <div class="item js-modal-trigger" data-target="modal-test-tree">
+        <div class="item">
+          <a href="./static/images/inference/trees.jpg" data-lightbox="image">
             <img src="./static/images/inference/trees.jpg" alt="Trees Image">
+          </a>
           <div class="caption">
             <h2 class="subtitle has-text-centered"><font size="-0.7">Trees</font></h2>
             <p class="subcaption has-text-centered">Screenshot of Training Environment: Trees</p>
