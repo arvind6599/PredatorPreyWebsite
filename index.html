@@ -495,7 +495,7 @@
           </p>
         </div>
         <!-- Creating environments. -->
-        <h3 class="title is-4">Environments</h3>
+        <h3 class="title is-4">III-I. Environments</h3>
         <div class="content has-text-justified">
           <p>
             We present a diverse set of simulated environments aimed at replicating various scenarios involving predator-prey interactions.
@@ -582,7 +582,7 @@
     <div class="columns is-centered">
       <div class="column is-full-width">
         <!-- Creating agents. -->
-        <h3 class="title is-4">Predator and Prey Agents</h3>
+        <h3 class="title is-4">III-II. Predator and Prey Agents</h3>
         <div class="content has-text-justified">
           <p>
             Whilst the prey and predator have opposing objectives, they demonstrate similar characteristics. Both agents operate
@@ -651,7 +651,7 @@
         <!--/ Vision sensor. -->
 
         <!-- Training. -->
-        <h3 class="title is-4">Setting up Reinforcement Learning Training</h3>
+        <h3 class="title is-4">III-III. Setting up Reinforcement Learning Training</h3>
         <div class="content has-text-justified">
           <p>
             The setting of predator-prey dynamics can be framed as a two-player dynamic game \lars{(CITATION)}. This game-theoretic
@@ -728,16 +728,24 @@
       <div class="column is-full-width">
         <h2 class="title is-3" id="exp">IV. Experiments</h2>
 
-        <!-- Inference environments. -->
-        <h3 class="title is-4">Training Setup</h3>
         <p>
-          Our project employs a deep learning architecture based on a convolutional neural network (CNN).
+          In this section, we discuss the setup and results of the experiments in detail. Regarding results, we first discuss the training progression, after which we do both a qualitative and
+          a quantitative analysis of the different agent configurations.
         </p>
+        <br>
+
+        <!-- Inference environments. -->
+        <h3 class="title is-4">IV-I. Training Setup</h3>
         <br/>
         <div class="content has-text-justified">
           <div class="container">
             <!-- <h2 class="title is-2 has-text-centered">Model and Behavior Parameters</h2> -->
                 <h3 class="title is-5">Training details</h3>
+                <p>
+                  The agents are trained on all environments mentioned in the methodology section in parallel. By having environments of different difficulties,
+                  a speed-up in training can be observed, similar as in curriculum learning \lars{CITE}. Furthermore, multiple agents of each type were present
+                  in each environment. Although this could make the environment unstable, it greatly enhances training speed.
+                </p>
                 <p>
                   The predator and prey were each trained self-play for \(9 \cdot 10^6\) steps, where one step corresponds to
                   one frame in the simulation. The swap between the frozen training teams happens every \(3 \cdot 10^5\) training steps. At
@@ -804,8 +812,9 @@
 
         <div class="content has-text-justified">
           <div class="container">
-            <h3 class="title is-5">Environments</h3>
+            <h3 class="title is-5">Inference environments</h3>
             <p>
+              \lars{We should write on why we chose to use these.}
             </p>
 
           </div>
@@ -910,34 +919,40 @@
 
         <!-- Results. -->
         <!-- Include median_time_survived.html using an iframe -->
-        <h3 class="title is-4">Results</h3>
+        <h3 class="title is-4">IV-II.Results</h3>
         <div class="content has-text-justified">
-          <p>
-            Results
-          </p>
-
           <div class="content has-text-justified">
             <div class="container">
               <!-- <h2 class="title is-2 has-text-centered">Model and Behavior Parameters</h2> -->
                   <h3 class="title is-5">Training results</h3>
-                  <p>
-                    Training results
-                  </p>
                   <div class="box">
                       <img src="./static/images/training-plot.png" alt="Reward plot during training">
                       <h5 class="subtitle has-text-centered">
                         <font size="-0.7">
                           <span style="font-weight:normal">
-                            (Left) Average returns over 9 million steps of training for each agent configuration.
-                            (Right) Average episode lengths over 9 million steps of training for each agent configuration.
+                            (Left) Average returns over \(9\) million steps of training for each agent configuration.
+                            (Right) Average episode lengths over \(9\) million steps of training for each agent configuration.
                             Note that, unfortunately, the training logs for 'Normal' vision were lost. However the trend in rewards
                             was similar to the other plots shown here. Furthermore, take note that the x-axis represents the number of steps,
                             so if the predator started training, it would swap at the step \(300000\), and the x-label for the prey at total step \(300005\)
-                            would be \(5\). An exponential smoothing of strength 0.8 was used.
+                            would be \(5\). An exponential smoothing of strength \(0.8\) was used.
                         </span>
                         </font>
                       </h5>
                   </div>
+                  <p>
+                    The average returns during training for various vision configurations of predator and prey agents are illustrated in the left figure. It is
+                    observed that the PredatorBoth vision exhibits a slower learning rate compared to other configurations, likely due to the reduced field of
+                    view when both agents have predator vision. However, this effect diminishes over time. Conversely, the SwappedVision configuration stands out
+                     as advantageous for the predators, attributed to the vision setup that grants predators a wider field of view while restricting the prey's vision.
+                     Despite the impressive hunting prowess of predators, prey agents still demonstrate substantial learning progress. This finding highlights the
+                     adaptability and refinement of evasive maneuvers by prey agents, even in the presence of highly skilled predators.
+                  </p>
+                  <p>
+                    In the right figure, we analyze the episode length throughout the training process. Interestingly, we consistently observe a decreasing trend in episode
+                    length across all configurations. This reduction reflects a notable enhancement in the predator's decision-making capabilities and their aptitude for
+                    achieving goals within shorter timeframes.
+                  </p>
                   <br>
             </div>
 
@@ -973,7 +988,7 @@
         <h2 class="title is-3" id="conclusion">V. Conclusions and Limitations</h2>
 
         <!-- Limitations. -->
-        <h3 class="title is-4">Limitations</h3>
+        <h3 class="title is-4">V-I. Limitations</h3>
         <div class="content has-text-justified">
           <p>
             Limitations
@@ -983,7 +998,7 @@
         <!--/ Limitations. -->
 
         <!-- Future work. -->
-        <h3 class="title is-4">Future work</h3>
+        <h3 class="title is-4">V-II. Future work</h3>
         <div class="content has-text-justified">
           <p>
             Future work
