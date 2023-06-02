@@ -755,27 +755,11 @@
         <br>
 
         <!-- Inference environments. -->
-        <h3 class="title is-4">IV-I. Training Setup</h3>
+        <h3 class="title is-4">IV-I. Experimental Setup</h3>
         <br/>
         <div class="content has-text-justified">
           <div class="container">
             <!-- <h2 class="title is-2 has-text-centered">Model and Behavior Parameters</h2> -->
-                <h3 class="title is-5">Training details</h3>
-                <p>
-                  The agents are trained on all environments mentioned in the methodology section in parallel. By having environments of different difficulties,
-                  a speed-up in training can be observed, similar as in curriculum learning <a href="https://dl.acm.org/doi/abs/10.1145/1553374.1553380?casa_token=nh2ZrojaWoAAAAAA:ch-UtBUm-jXdt36EJoGrONsdXTfKYTOF9g3wpMqUjykIzeeCv2_d4p2hoGlyuJRGTlWCdZyWmPVmmg">[13]</a>,
-                  <a href="https://dl.acm.org/doi/abs/10.5555/3455716.3455897">[14]</a>. Furthermore, multiple agents of each type were present
-                  in each environment. Although this could make the environment unstable, it greatly enhances training speed.
-                </p>
-                <p>
-                  The predator and prey were each trained self-play for \(9 \cdot 10^6\) steps, where one step corresponds to
-                  one frame in the simulation. The swap between the frozen training teams happens every \(3 \cdot 10^5\) training steps. At
-                  each episode, the agent is spawned with a random rotation the y-axis, and the maximum episode duration is \(10^4\).
-                  The model will play against the most recent version of the agent \(80\%\) of the time. The models both consist of
-                  a \(3\) hidden-layer MLP with \(512\) neurons each with batch at each layer. The model is optimized using
-                  PPO with the Adam <a href="https://arxiv.org/abs/1412.6980">[15]</a> optimizer with a learning of \(0.0003\) and no decay. Finally, the buffer sizes of both
-                  agents are set to \(40960\).
-                </p>
                 <h3 class="title is-5">Agent parameters</h3>
                 <p>
                   \lars{We should also discuss the specific stuff like movement speed here}
@@ -833,6 +817,24 @@
 
         <div class="content has-text-justified">
           <div class="container">
+
+            <h3 class="title is-5">Training details</h3>
+            <p>
+              The agents are trained on all environments mentioned in the methodology section in parallel. By having environments of different difficulties,
+              a speed-up in training can be observed, similar as in curriculum learning <a href="https://dl.acm.org/doi/abs/10.1145/1553374.1553380?casa_token=nh2ZrojaWoAAAAAA:ch-UtBUm-jXdt36EJoGrONsdXTfKYTOF9g3wpMqUjykIzeeCv2_d4p2hoGlyuJRGTlWCdZyWmPVmmg">[13]</a>,
+              <a href="https://dl.acm.org/doi/abs/10.5555/3455716.3455897">[14]</a>. Furthermore, multiple agents of each type were present
+              in each environment. Although this could make the environment unstable, it greatly enhances training speed.
+            </p>
+            <p>
+              The predator and prey were each trained self-play for \(9 \cdot 10^6\) steps, where one step corresponds to
+              one frame in the simulation. The swap between the frozen training teams happens every \(3 \cdot 10^5\) training steps. At
+              each episode, the agent is spawned with a random rotation the y-axis, and the maximum episode duration is \(10^4\).
+              The model will play against the most recent version of the agent \(80\%\) of the time. The models both consist of
+              a \(3\) hidden-layer MLP with \(512\) neurons each with batch at each layer. The model is optimized using
+              PPO with the Adam <a href="https://arxiv.org/abs/1412.6980">[15]</a> optimizer with a learning of \(0.0003\) and no decay. Finally, the buffer sizes of both
+              agents are set to \(40960\).
+            </p>
+            
             <h3 class="title is-5">Inference environments</h3>
             <p>
               \lars{We should write on why we chose to use these.}
@@ -1030,8 +1032,10 @@
         <div align="center">
           <iframe mozallowfullscreen="true" allow="autoplay; fullscreen"  src="https://play.unity.com/webgl/89a7d2dd-a44b-4efb-af96-1dc4544ddacb" style="border:0px #000000 none;" name="Predator Prey Interaction" scrolling="no" msallowfullscreen="true" allowfullscreen="true" webkitallowfullscreen="true" allowtransparency="true" frameborder="0" marginheight="px" marginwidth="320px" height="540px" width="960px"></iframe>
         </div>
-        <h6 class="subtitle has-text-centered">
-          Play against a trained prey in our test environment by using your arrow keys. Please note that the predator has been slowed down, and you will likely easily be able to catch the prey. It is meant for getting an idea of the setup.
+        <h6 class="subtitle has-text-centered"><font size="-0.5"><em>
+          Play against a trained prey in our test environment by using your arrow keys. Please note that the predator has been slowed down,
+          and you will likely easily be able to catch the prey. It is meant for getting an idea of the setup. The prey behaviour may not
+          always be optimal, but if you play a few times you can start to observe some interesting behaviours.</em></font>
         </h6>
         <br>
         <!--/ Future work. -->
