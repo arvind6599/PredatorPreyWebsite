@@ -360,7 +360,7 @@
           </p>
           <p>
             To evaluate the effectiveness of our approach, we both quantitatively evaluate agent performance in new environments and qualitatively observe
-            the emergent strategies and behaviors of the agents under different configurations. Our work builds upon existing literature in this area to gain a deeper understanding of how differences in visual
+            the emergent strategies and behaviours of the agents under different configurations. Our work builds upon existing literature in this area to gain a deeper understanding of how differences in visual
             perception can influence predator-prey interactions.
           </p>
         </div>
@@ -444,7 +444,7 @@
           </h5>
         </div>
          <p>
-           However, this study does not explicitly explore the effects of varying the vision fields on the emergent behaviors of the agents.
+           However, this study does not explicitly explore the effects of varying the vision fields on the emergent behaviours of the agents.
          </p>
       </div>
     </div>
@@ -460,7 +460,7 @@
           <p>
             Given the existing gaps in the literature for the study of predator-prey dynamics in the context of vision, our work aims
             to address them by incorporating various vision fields to represent different predators and prey. Through this approach,
-            we investigate the impact of diverse visual perspectives on the emergent behaviors of the agents, providing valuable insights
+            we investigate the impact of diverse visual perspectives on the emergent behaviours of the agents, providing valuable insights
             into the adaptive strategies employed in predator-prey interactions.
           </p>
         </div>
@@ -501,7 +501,7 @@
         <div class="content has-text-justified">
           <p>
             We present a diverse set of simulated environments aimed at replicating various scenarios involving predator-prey interactions.
-            Our objective is to foster a wide range of hunting behaviors for predators while prey aim to survive. To achieve
+            Our objective is to foster a wide range of hunting behaviours for predators while prey aim to survive. To achieve
             this diversity, we incorporate obstacles such as trees and rocks within the environments. Additionally, we introduce walls along
             the boundaries to confine the agents to the designated training area. This confinement allows us to concentrate the actions of an agent
              and observations within a controlled environment.
@@ -590,7 +590,7 @@
             Whilst the prey and predator have opposing objectives, they demonstrate similar characteristics. Both agents operate
             within a continuous action space with two degrees of freedom: rotation about the \(y\)-axis and forward/backward movement.
             Each degree of freedom allows the agent to select a value between \([-1, 1]\), determining the direction and intensity of
-             movement. The agents' behavioral parameters consist of maximum movement and rotation speeds, which scale this intensity
+             movement. The agents' behavioural parameters consist of maximum movement and rotation speeds, which scale this intensity
               value. Notably, the predator possesses an additional box collider located at its face, resulting in the prey's death
               upon collision. Conversely, the prey lacks this collider as its primary goal involves evading the predator.
           </p>
@@ -885,7 +885,7 @@
               environment, like in training, consists of an empty environment. Additional environments include similar obstacles and
               hiding spots in different configurations, introducing more blind spots for the prey to utilize for protection. We also
               incorporate a complex "hide and seek" environment that encourages the agents to showcase
-              interesting behaviors and interactions. The inference environments are shown below.
+              interesting behaviours and interactions. The inference environments are shown below.
             </p>
 
           </div>
@@ -1050,21 +1050,19 @@
                 </p>
                 <h3 class="title is-6">Normal vision</h3>
                 <p>
-                  This is the configuration where the agent is trained on it's respective vision style. In the 
-                  simulation we observe a lot of behaviours that suggest that both
+                  This configuration features agent that are trained on their respective vision style. In the 
+                  simulation we observe many instances that suggest that both
                   agents have learnt strategies to maximize their reward. 
                 </p>
-
                 <p>
                   Predator: Chases the prey while keeping
                   it in its depth FOV thus maximizing information and also making up for the lack of memory.
                 </p>
-
                 <p>
-                  Prey: Has visibly learnt ways to evade the predators. Using its monocular vision 
+                  Prey: As seen below, it has visibly learnt ways to evade the predators. Using its monocular vision 
                   vision it is able to keep track of the predator and also use obstacles to its advantge 
                   by either hiding behind it or going around it. It also uses a zig zag motion to avoid the predator 
-                  being in its bling spot given by a cone right behind the prey.
+                  being in its blind spot.
                 </p>
             </div>
           </div>
@@ -1139,12 +1137,12 @@
           <div class="content has-text-justified">
             <h3 class="title is-6">Both predator</h3>
             <p>
-              We give both the agents, predator vison and see how they behave. Since the prey is trained using predator vision, 
-              its blind spot is much larger. Thus the prey is unaware if the predator chases it from behind,
-              thus can only rely on cues ahead of it to keep track of objects and the predator. 
+              We give both the agents predator vison and observe their behaviour. Since the prey is trained using predator vision, 
+              its blind spot is much larger, thus the prey is unaware if it is being chased from behind.
+              It can only rely on cues ahead of it to keep track of objects and the predator. 
             </p>
             <p>
-              The behviour indicates that the prey has failed to adapt and that further training 
+              Overall the behviour indicates that the prey has failed to adapt and that further training 
               is required.
             </p>
           </div>
@@ -1216,13 +1214,13 @@
             </p>
             <p>
               Predator: Since it is trained on prey vision, the predator exhibits less aggressive behaviour and more
-              tracking, in order to keep the prey in its depth FOV, by rotating when the prey is in its monocular 
+              tracking(in order to keep the prey in its narrow depth FOV) by rotating when the prey is in its monocular 
               vision. The less aggression exhbited by the predator is a major reason for longer meadian survival time
               of the prey.
             </p>
             <p>
               Prey: We observe that the prey has
-              learnt to evade the prey similarly to the prey agent trained in the normal configuation. This can be 
+              learnt evasive strategies similar to the prey in the normal configuration. This can be 
               seen in the video of the prey evading the predator in the control environment.
             </p>
           </div>
@@ -1288,24 +1286,25 @@
             <h3 class="title is-6">Swapped vision</h3>
             <p>
               The aim of this configuration is to comment on the importance of the different vision styles and to test
-              whether they are suitable for the respective agents. Swapped vision has lower median values for the 
-              time survived in all environments except control.
+              whether they are suitable for their respective agents. Swapped vision has lower median values for the 
+              time survived in all environments except the control environment.
             </p>
             <p>
               Prey: It exhibits behaviours suggesting that it has learnt to keep track of the predator and back up
-              to keep running away from the predator. Because it is trained on predator vision, it is unware of the
-              objects behind it thus runs into them and even backs up into corners or walls. Since the prey does not
-              have its own positional information and memory, it continues to back up into a wall or corner and getting
-              caught by the predator as seen in the videos below.
+              to keep running away from the predator. Since it is trained on predator vision, it is unware of the
+              objects behind it thus runs into them and even backs up into corners or walls. The prey continues to do so 
+              until it is eventually caught by the predator as seen in the videos below, possibly due to lack 
+              of its own positional information and memory.
             </p>
             <p>
-              Predator: Since it is trained on prey vision, continues to rotate and try to keep the prey in its depth
-              FOV in order to chase the prey effectively.
+              Predator: Since it is trained on prey vision, it continues to rotate and try to keep the prey in its narrow depth
+              FOV similar to the both-prey configuration's predator observations.
             </p>
             <p>
               Thus the low median survival times can be explained by the prey's overall lack of
-              awareness of objects behind it leading it to back up into objects, walls, corners making it a sitting duck 
-              for the predator. In the control environment, this is less of an issue thus leading to a higher median time survived.
+              awareness of objects behind it, causing it to back up into objects, walls and corners making it a sitting duck 
+              for the predator. In the control environment, this is less of an issue due to lack of objects thus leading 
+              to a higher median time survived.
             </p>
           </div>
         </div>
@@ -1394,7 +1393,7 @@
           </p>
           <ul>
             <li>
-              The predator and prey agents sometimes displayed untrained or random behavior, suggesting a need for further training. OpenAI's hide and seek environment required approximately 2.7 million episodes for seekers to consistently chase hiders, even with the aid of a curriculum learning approach. Our training lasted only around 10 million steps (approximately \(10^4\) episodes). Although training on OpenAI's scale is not feasible, additional training or alternative strategies like curriculum learning would have likely benefitted the agents greatly.
+              The predator and prey agents sometimes displayed untrained or random behaviour, suggesting a need for further training. OpenAI's hide and seek environment required approximately 2.7 million episodes for seekers to consistently chase hiders, even with the aid of a curriculum learning approach. Our training lasted only around 10 million steps (approximately \(10^4\) episodes). Although training on OpenAI's scale is not feasible, additional training or alternative strategies like curriculum learning would have likely benefitted the agents greatly.
             </li>
           </ul>
 
@@ -1715,7 +1714,7 @@
           <p>
             L.Q. primarily set up the environment and agents. S.M. primarily implemented the modified ray perception sensor.
             L.Q. and S.M. performed training for different vision configurations.
-            A.M. primarily conducted inference and experiments for different configurations and behavior parameters.
+            A.M. primarily conducted inference and experiments for different configurations and behaviour parameters.
             All three of us wrote the report and worked on the presentation. Overall, we contributed to the project equally.
           </p>
           <p><em>
