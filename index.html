@@ -271,7 +271,7 @@
             of trained predator and prey agents which use varying vision
             fields. Our findings support our current understanding that
             depth perception is very important for predators, whilst field
-            of view is crucial for prey. Our work improves upon existing
+            of view is crucial for prey. Our work adds to existing
             literature regarding predator-prey simulations. By implementing
              some modifications to the setup, our approach enables
             exploring the complex interactions between predators and prey
@@ -501,7 +501,7 @@
         <div class="content has-text-justified">
           <p>
             We present a diverse set of simulated environments aimed at replicating various scenarios involving predator-prey interactions.
-            Our objective is to foster a wide range of hunting behaviors for predators while prey aim to survive. To achieve
+            Our objective is to uncover a wide range of behaviors for the predators and prey. To achieve
             this diversity, we incorporate obstacles such as trees and rocks within the environments. Additionally, we introduce walls along
             the boundaries to confine the agents to the designated training area. This confinement allows us to concentrate the actions of an agent
              and observations within a controlled environment.
@@ -587,7 +587,7 @@
         <h3 class="title is-4">III-B. Predator and Prey Agents</h3>
         <div class="content has-text-justified">
           <p>
-            Whilst the prey and predator have opposing objectives, they demonstrate similar characteristics. Both agents operate
+            Whilst the prey and predator have opposing objectives, they share similar characteristics. Both agents operate
             within a continuous action space with two degrees of freedom: rotation about the \(y\)-axis and forward/backward movement.
             Each degree of freedom allows the agent to select a value between \([-1, 1]\), determining the direction and intensity of
              movement. The agents' behavioral parameters consist of maximum movement and rotation speeds, which scale this intensity
@@ -619,8 +619,8 @@
             In order to simulate various vision fields, we employ a modified version of the ML-Agents Ray Perception sensor. This
             sensor uses a collection of ray casts originating from a central point. Several parameters are available to manipulate
              the vision, including ray angles (to establish the field of view), ray length (to determine the depth of field), number
-             of rays (to regulate ray density), and a list of tags for filtering detected objects. Each ray conveys the following
-             information: a flag indicating whether it collides with a tagged object, a one-hot encoded vector identifying the object
+             of rays (to regulate ray density/resolution), and a list of tags for filtering detected objects. Each ray conveys the following
+             information: a flag indicating whether it collided with a tagged object, a one-hot encoded vector identifying the object
               type, and the normalized distance to the hit object relative to the ray length. Consequently, the sensor's output
               comprises a flattened vector encapsulating the information encoded within each ray.
           </p>
@@ -813,7 +813,7 @@
                   <div align="center">
                   <font size="-0.7">
                     <span style="font-weight:normal">
-                      Parameters of the prey and predator-style vision sensors
+                      Parameters of the prey and predator-style vision sensors, and the behavioural parameters used for the agents.
                   </span>
                   </font>
                   </div>
@@ -822,16 +822,15 @@
                 <p>Firstly, we establish two distinct categories of vision: prey-style and predator-style.
                   This can be seen in the table above.
                   Prey-style vision emphasizes a broad field of view while limiting the binocular region,
-                  whereas predator-style vision exhibits the opposite characteristics. Additionally, we
-                  augment the agents' abilities with observation stacks, which simulate a brief memory of
-                  recent events, and this augmentation is applied to both agents.
+                  whereas predator-style vision exhibits the opposite characteristics. Additionally, for both agents we
+                  stack the observations to simulate a brief memory of recent events.
                 </p>
 
                 <p>
-                  When it comes to the actual
-                  process of making deductions, we designate the maximum speed of the prey to be greater
-                  than that of the predator. We adopt this approach because we are of the opinion that
-                  higher speeds during inference will enhance the visibility of chasing patterns.
+                  During inference, we designate the maximum speed of the prey to be greater
+                  than that of the predator. We adopt this approach to give the prey a better chance to play out
+                  its learned strategies rather than getting caught too quickly in each episode.
+
                 </p>
 
                 <div class="columns is-centered">
@@ -841,7 +840,7 @@
                       <h5 class="subtitle has-text-centered">
                         <font size="-0.7">
                           <span style="font-weight:normal">
-                            The combinations of vision sensors used for the agents in the experiments.
+                            The combinations of vision sensors used for the predator and prey in the experiments.
                         </span>
                         </font>
                       </h5>
@@ -850,9 +849,8 @@
                 </div>
 
                 <p>
-                  As depicted in the figure above, we proceed to train each feasible combination of
-                  vision types for both the predator and the prey. These trained models are subsequently employed
-                  for making inferences.
+                  As depicted in the figure above, we train agents in 4 configurations to cover each combination of
+                  vision types for the predator and prey. The trained models are then used to perform inferences.
                 </p>
 
           </div>
@@ -863,8 +861,8 @@
 
             <h3 class="title is-5">Training details</h3>
             <p>
-              The agents are trained on all environments mentioned in the methodology section in parallel, using the parameters mentioned in the agent configuration sections
-              The only difference is that the maximum speed of the prey is now set to \(5.5\). By having environments of different difficulties,
+              The agents are trained on all environments mentioned in the methodology section in parallel, using the parameters mentioned in the agent parameters section.
+              The only difference is that the maximum speed of the prey was set to \(5.5\). By having environments of different difficulties,
               a speed-up in training can be observed, similar as in curriculum learning <a href="https://dl.acm.org/doi/abs/10.1145/1553374.1553380?casa_token=nh2ZrojaWoAAAAAA:ch-UtBUm-jXdt36EJoGrONsdXTfKYTOF9g3wpMqUjykIzeeCv2_d4p2hoGlyuJRGTlWCdZyWmPVmmg">[13]</a>,
               <a href="https://dl.acm.org/doi/abs/10.5555/3455716.3455897">[14]</a>. Furthermore, three agents of each type were present
               in each environment. Although this could make the environment unstable due to partial observability, it greatly enhances training speed.
@@ -873,9 +871,9 @@
               The predator and prey were each trained self-play for \(9 \cdot 10^6\) steps, where one step corresponds to
               one frame in the simulation. The swap between the frozen training teams happens every \(3 \cdot 10^5\) training steps. At
               each episode, the agent is spawned with a random rotation the y-axis, and the maximum episode duration is \(10^4\).
-              The model will play against the most recent version of the agent \(80\%\) of the time. The models both consist of
-              a \(3\) hidden-layer MLP with \(512\) neurons each with batch at each layer. The model is optimized using
-              PPO with the Adam <a href="https://arxiv.org/abs/1412.6980">[15]</a> optimizer with a learning of \(0.0003\) and no decay. Finally, the buffer sizes of both
+              The model plays against the most recent version of the agent \(80\%\) of the time. The models both consist of
+              a \(3\) hidden-layer MLP with \(512\) neurons with batch normalisation at each layer. The model is optimized using
+              PPO with the Adam <a href="https://arxiv.org/abs/1412.6980">[15]</a> optimizer with a learning rate of \(0.0003\) and no decay. Finally, the buffer sizes of both
               agents are set to \(40960\).
             </p>
 
@@ -883,9 +881,8 @@
             <p>
               For testing the agents we design new out of distribution environments with varying levels of complexity. The control
               environment, like in training, consists of an empty environment. Additional environments include similar obstacles and
-              hiding spots in different configurations, introducing more blind spots for the prey to utilize for protection. We also
-              incorporate a complex "hide and seek" environment that encourages the agents to showcase
-              interesting behaviors and interactions. The inference environments are shown below.
+              hiding spots in different configurations, introducing more blind spots for the prey to utilize for protection. The inference
+              environments are shown below.
             </p>
 
           </div>
@@ -1005,8 +1002,8 @@
                             (Right) Average episode lengths over \(9\) million steps of training for each agent configuration.
                             Note that, unfortunately, the training logs for 'Normal' vision were lost. However the trend in rewards
                             was similar to the other plots shown here. Furthermore, take note that the x-axis represents the number of steps,
-                            so if the predator started training, it would swap at the step \(300000\), and the x-label for the prey at total step \(300005\)
-                            would be \(5\). An exponential smoothing of strength \(0.8\) was used.
+                            so if the predator was trained first, it would swap at the step \(300000\), and the x-label for the prey at total step \(300005\)
+                            would be \(5\). An exponential smoothing of strength \(0.8\) is used.
                         </span>
                         </font>
                       </h5>
@@ -1018,8 +1015,10 @@
                   </p>
                   <p>
                     In the right figure, we analyze the episode length throughout the training process. Interestingly, we consistently observe a decreasing trend in episode
-                    length across all configurations. However, this does not indicate that the prey has not learned anything, but rather only shows that the predator dominates
-                    in this specific configuration.
+                    length across all configurations. It is important to note however that whilst it may seem like the predator is learning to consistenly dominate the
+                    prey, the training environment is heavily biased towards the predator since there are three predators which can all catch the prey. Thus, to judge
+                    the true performance of the agents we perform inference in a more balanced environment.
+                    </thead>
                   </p>
                   <br>
             </div>
@@ -1029,7 +1028,7 @@
               <!-- <h2 class="title is-2 has-text-centered">Model and Behavior Parameters</h2> -->
                 <h3 class="title is-5">Inference results</h3>
                 <p>
-                
+
                 </p>
                 <div class="box">
                   <iframe src="./static/figures/median_time_survived.html" frameborder="0" width="100%" height="500px"></iframe>
