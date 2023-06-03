@@ -1036,15 +1036,36 @@
                 </div>
 
                 <br>
+                <p>  
+                In the plot we study the median time survived by the prey in the inference environments for 
+                different configurations. We look at time survived in order to study the relative 
+                agent performance in each setting. The reason for using median is so that the results are
+                not swayed by outliers which might be caused due to no interactions between the predator and 
+                prey, which might be due to agents getting stuck in an obstacle.
+                </p>
+                <p>
+                To comment further on the nature of learning of the agents trained in different configuration 
+                and identify the cause of the median time survived values, we look at instances of the
+                actual behaviour of these trained agents in the various environments.
+                </p>
                 <h3 class="title is-6">Normal vision</h3>
                 <p>
-                  This configuration as expected is the closest
-                  to the real-world complex interactions, featuring prey
-                  running away from the predator without looking at it,
-                  i.e. does not primarily depend on the depth rays to
-                  detect and react to predators’ movements
+                  This is the configuration where the agent is trained on it's respective vision style. In the 
+                  simulation we observe a lot of behaviours that suggest that both
+                  agents have learnt strategies to maximize their reward. 
                 </p>
 
+                <p>
+                  Predator: Chases the prey while keeping
+                  it in its depth FOV thus maximizing information and also making up for the lack of memory.
+                </p>
+
+                <p>
+                  Prey: Has visibly learnt ways to evade the predators. Using its monocular vision 
+                  vision it is able to keep track of the predator and also use obstacles to its advantge 
+                  by either hiding behind it or going around it. It also uses a zig zag motion to avoid the predator 
+                  being in its bling spot given by a cone right behind the prey.
+                </p>
             </div>
           </div>
         </div>
@@ -1069,7 +1090,7 @@
                     type="video/mp4">
           </video>
           <h2 class="subtitle has-text-centered">
-            Prey evading the predator using the trees
+            Prey evading the predator using the trees to its advantage
           </h2>
         </div>
         <div class="item item-chair-tp">
@@ -1082,15 +1103,6 @@
           </h2>
         </br>
         </div>
-        <div class="item item-shiba">
-          <video poster="" id="shiba" controls playsinline height="100%">
-            <source src="./static/videos/Normal/prey-bivsmonovison-behaviour-control.mp4"
-                    type="video/mp4">
-          </video>
-          <h2 class="subtitle has-text-centered">
-            Different reactions for when the prey is in the binocular and monocular FOV of the predator
-          </h2>
-        </div>
         <div class="item item-fullbody">
           <video poster="" id="fullbody" controls playsinline height="100%">
             <source src="./static/videos/Normal/zig-zag.mp4"
@@ -1099,8 +1111,15 @@
           <h2 class="subtitle has-text-centered">
             Prey exhibitsing zig-zag movement when the predator is behind
           </h2>
-            </video>
-          </div>
+        </div>
+        <div class="item item-shiba">
+          <video poster="" id="shiba" controls playsinline height="100%">
+            <source src="./static/videos/Normal/prey-bivsmonovison-behaviour-control.mp4"
+                    type="video/mp4">
+          </video>
+          <h2 class="subtitle has-text-centered">
+            Different reactions for when the prey is in the binocular and monocular FOV of the predator
+          </h2>
         </div>
       </div>
     </div>
@@ -1120,12 +1139,13 @@
           <div class="content has-text-justified">
             <h3 class="title is-6">Both predator</h3>
             <p>
-              This configuration features more
-              activated agents that are encouraged to move around
-              a lot more. In this setting, the binocular field of view
-              is very important and both agents primarily keep each
-              other within the binocular field of view for the purpose
-              of tracking and evasion
+              We give both the agents, predator vison and see how they behave. Since the prey is trained using predator vision, 
+              its blind spot is much larger. Thus the prey is unaware if the predator chases it from behind,
+              thus can only rely on cues ahead of it to keep track of objects and the predator. 
+            </p>
+            <p>
+              The behviour indicates that the prey has failed to adapt and that further training 
+              is required.
             </p>
           </div>
         </div>
@@ -1190,20 +1210,20 @@
           <div class="content has-text-justified">
             <h3 class="title is-6">Both prey</h3>
             <p>
-              In this configuration both the prey
-              and predator agents are trained on the prey vision,
-              which is mostly consisting of monocular vision. As
-              seen in the figure, the median time survived is the
-              highest for this configuration. This can be due to the
-              fact that prey vision is not suitable for the predator,
-              thus making it weaker and less effective. It can also
-              be due to the fact that the prey benefits from learning
-              to detect the predator with monocular vision and does
-              not have to look at it while evading it, thus having
-              increased awareness in terms of avoiding obstacles
-              present within the environment. Complex environments
-              such as Trees and Hide have a larger difference in
-              median time survived as compared to others
+              In this configuration both the prey and predator agents are trained on the prey vision, 
+              which is mostly consisting of monocular vision. As seen in the figure, the median time survived 
+              is the highest for this configuration.
+            </p>
+            <p>
+              Predator: Since it is trained on prey vision, the predator exhibits less aggressive behaviour and more
+              tracking, in order to keep the prey in its depth FOV, by rotating when the prey is in its monocular 
+              vision. The less aggression exhbited by the predator is a major reason for longer meadian survival time
+              of the prey.
+            </p>
+            <p>
+              Prey: We observe that the prey has
+              learnt to evade the prey similarly to the prey agent trained in the normal configuation. This can be 
+              seen in the video of the prey evading the predator in the control environment.
             </p>
           </div>
         </div>
@@ -1267,20 +1287,25 @@
           <div class="content has-text-justified">
             <h3 class="title is-6">Swapped vision</h3>
             <p>
-              As observed in Figure (Ar: ADD FIGURE),
-              swapped configuration has low median values for the
-              time survived in all environments except control. In
-              this configuration, after having trained using predator
-              vision, the prey has learned to keep the predator in
-              its depth field of view while trying to run away from
-              it. This strategy has the limitation that it is unable
-              to detect obstacles effectively thus either backing up
-              into certain nearby obstacles unknowingly or even
-              backing up into corners making it a sitting duck for the
-              predator to attack. This is less of an issue in the control
-              environment since it does not contain any obstacles and
-              thus demonstrating a higher median time survived by
-              the prey
+              The aim of this configuration is to comment on the importance of the different vision styles and to test
+              whether they are suitable for the respective agents. Swapped vision has lower median values for the 
+              time survived in all environments except control.
+            </p>
+            <p>
+              Prey: It exhibits behaviours suggesting that it has learnt to keep track of the predator and back up
+              to keep running away from the predator. Because it is trained on predator vision, it is unware of the
+              objects behind it thus runs into them and even backs up into corners or walls. Since the prey does not
+              have its own positional information and memory, it continues to back up into a wall or corner and getting
+              caught by the predator as seen in the videos below.
+            </p>
+            <p>
+              Predator: Since it is trained on prey vision, continues to rotate and try to keep the prey in its depth
+              FOV in order to chase the prey effectively.
+            </p>
+            <p>
+              Thus the low median survival times can be explained by the prey's overall lack of
+              awareness of objects behind it leading it to back up into objects, walls, corners making it a sitting duck 
+              for the predator. In the control environment, this is less of an issue thus leading to a higher median time survived.
             </p>
           </div>
         </div>
