@@ -1028,7 +1028,11 @@
               <!-- <h2 class="title is-2 has-text-centered">Model and Behavior Parameters</h2> -->
                 <h3 class="title is-5">Inference results</h3>
                 <p>
-
+                The plot below shows median number of steps survived by the prey in the inference environments for
+                different configurations of vision sensors. We look at time survived in order to study the relative
+                performance of each agent in different settings (higher time indicates more effective prey, lower time indicates more
+                effective predator). We use median so that the results are not swayed by outliers which might be caused due to
+                no interactions between the predator and prey, for example if they get stuck in an obstacle for an episode.
                 </p>
                 <div class="box">
                   <iframe src="./static/figures/median_time_survived.html" frameborder="0" width="100%" height="500px"></iframe>
@@ -1036,31 +1040,28 @@
 
                 <br>
                 <p>
-                In the plot we study the median time survived by the prey in the inference environments for
-                different configurations. We look at time survived in order to study the relative
-                agent performance in each setting. The reason for using median is so that the results are
-                not swayed by outliers which might be caused due to no interactions between the predator and
-                prey, which might be due to agents getting stuck in an obstacle.
-                </p>
-                <p>
-                To comment further on the nature of learning of the agents trained in different configuration
-                and identify the cause of the median time survived values, we look at instances of the
-                actual behaviour of these trained agents in the various environments.
+                To comment further on the learned strategies of the agents under different configurations and to identify the
+                reasons for the results we see above, we qualitatively assess some key behaviour patterns of the trained agents
+                in each configuration.
                 </p>
                 <h3 class="title is-6">Normal vision</h3>
                 <p>
-                  This configuration features agent that are trained on their respective vision style. In the
-                  simulation we observe many instances that suggest that both
-                  agents have learnt strategies to maximize their reward.
+                  This configuration features agents that are trained with their typical real-world vision field. We observe
+                  many instances that suggest both agents have learnt strategies to maximize their reward.
+                  The prey performs significantly worse with this configuration in the control environment, suggesting that it has learnt to
+                  effectively use obstacles in the other environments to evade the predator.
                 </p>
                 <p>
-                  Predator: Chases the prey while keeping
-                  it in its depth FOV thus maximizing information and also making up for the lack of memory.
+                  <em>Predator:</em> Chases the prey while trying to keep it in its binocular region. When the prey is in the monocular region
+                  it seems to favour rotation with slower movement speed, but when the prey is in its binocular region it makes bigger steps towards
+                  the prey. This likely hints at the importance of depth information for the predator, but it's possible that this is also influenced by the fact
+                  that the agents have very little memory (as evidenced by the predator forgetting about the prey as it falls out of its vision field),
+                  and is thus trying to simply keep the prey within its vision field for as long as possible.
                 </p>
                 <p>
-                  Prey: As seen below, it has visibly learnt ways to evade the predators. Using its monocular vision
-                  vision it is able to keep track of the predator and also use obstacles to its advantge
-                  by either hiding behind it or going around it. It also uses a zig zag motion to avoid the predator
+                  <em>Prey:</em> As seen below, it has visibly learnt ways to evade the predators. It is able to keep track of the
+                  predator using its monocular vision  and also uses obstacles to its advantage
+                  by either hiding behind or going around them. It also uses a zig zag motion to avoid the predator
                   being in its blind spot.
                 </p>
             </div>
@@ -1087,7 +1088,7 @@
                     type="video/mp4">
           </video>
           <h2 class="subtitle has-text-centered">
-            Prey evading the predator using the trees to its advantage
+            Prey evading the predator using the trees. Predator forgetting about the prey.
           </h2>
         </div>
         <div class="item item-chair-tp">
@@ -1115,7 +1116,7 @@
                     type="video/mp4">
           </video>
           <h2 class="subtitle has-text-centered">
-            Different reactions for when the prey is in the binocular and monocular FOV of the predator
+            Different behaviours when the prey is in the binocular/monocular FOV of the predator
           </h2>
         </div>
       </div>
@@ -1136,13 +1137,12 @@
           <div class="content has-text-justified">
             <h3 class="title is-6">Both predator</h3>
             <p>
-              We give both the agents predator vison and observe their behaviour. Since the prey is trained using predator vision,
-              its blind spot is much larger, thus the prey is unaware if it is being chased from behind.
-              It can only rely on cues ahead of it to keep track of objects and the predator.
+              Since the prey is trained using predator-style vision, its blind spot is much larger, thus the prey is unaware if
+              it is being chased from behind. It can only rely on cues ahead of it to keep track of objects and the predator.
             </p>
             <p>
-              Overall the behviour indicates that the prey has failed to adapt and that further training
-              is required.
+              Overall in this configuration there are also many instances which show that the prey has failed to properly learn to evade,
+              even when the predator is directly in its vision field, indicating that these agents likely require further training.
             </p>
           </div>
         </div>
@@ -1207,18 +1207,18 @@
           <div class="content has-text-justified">
             <h3 class="title is-6">Both prey</h3>
             <p>
-              In this configuration both the prey and predator agents are trained on the prey vision,
-              which is mostly consisting of monocular vision. As seen in the figure, the median time survived
-              is the highest for this configuration.
+              The median time survived by the prey is significantly higher across all environments in this configuration,
+              indicating that the predator trained with prey-style vision is likely ineffective, whilst the prey is able to
+              learn effetively.
             </p>
             <p>
-              Predator: Since it is trained on prey vision, the predator exhibits less aggressive behaviour and more
-              tracking(in order to keep the prey in its narrow depth FOV) by rotating when the prey is in its monocular
-              vision. The less aggression exhbited by the predator is a major reason for longer meadian survival time
+              <em>Predator:</em> Exhibits less aggressive behaviour and more tracking(in order to keep the prey in its narrow
+              depth FOV) by rotating when the prey is in its monocular
+              vision. The lower aggression exhbited by the predator is a major reason for longer median survival time
               of the prey.
             </p>
             <p>
-              Prey: We observe that the prey has
+              <em>Prey:</em> We observe that the prey has
               learnt evasive strategies similar to the prey in the normal configuration. This can be
               seen in the video of the prey evading the predator in the control environment.
             </p>
@@ -1284,26 +1284,25 @@
           <div class="content has-text-justified">
             <h3 class="title is-6">Swapped vision</h3>
             <p>
-              The aim of this configuration is to comment on the importance of the different vision styles and to test
-              whether they are suitable for their respective agents. Swapped vision has lower median values for the
-              time survived in all environments except the control environment.
+              This configuration has lower median time survived for the prey in all environments except control.
             </p>
             <p>
-              Prey: It exhibits behaviours suggesting that it has learnt to keep track of the predator and back up
-              to keep running away from the predator. Since it is trained on predator vision, it is unware of the
-              objects behind it thus runs into them and even backs up into corners or walls. The prey continues to do so
-              until it is eventually caught by the predator as seen in the videos below, possibly due to lack
-              of its own positional information and memory.
+              <em>Prey:</em> Exhibits behaviours suggesting that it has learnt to keep track of the predator in its frontal vision field
+              and move backwards to run away from the predator. However since it is lacking a wide field of view, it is unware of the
+              objects behind it and runs into them, making it an easy target. Thus the prey performs worse in environments with many
+              obstacles (such as trees) and better in control which has no obstacles.
+              In many examples it keeps backing up into the walls and corners until it is eventually caught
+              by the predator. This is likely due to a lack of memory and positional information, which means that the agent doesn't realise that it's
+              actions are futile and it's not moving anywhere.
             </p>
             <p>
-              Predator: Since it is trained on prey vision, it continues to rotate and try to keep the prey in its narrow depth
-              FOV similar to the both-prey configuration's predator observations.
+              <em>Predator:</em> Since it is trained on prey-style vision, it continues to rotate to try keep the prey in its binocular region,
+              similar to the both-prey configuration. However since the prey is also less effective with predator-style vision, the predator
+              has more success in this case with the median survival time for the prey being lower than the both-prey case (except for in control where the
+              prey can be effective with predator-style vision).
             </p>
             <p>
-              Thus the low median survival times can be explained by the prey's overall lack of
-              awareness of objects behind it, causing it to back up into objects, walls and corners making it a sitting duck
-              for the predator. In the control environment, this is less of an issue due to lack of objects thus leading
-              to a higher median time survived.
+
             </p>
           </div>
         </div>
@@ -1376,8 +1375,8 @@
             Our work investigates the role of vision in simulated predator-prey interactions. By varying the vision fields of predator and prey agents and training them using reinforcement learning, we make the following observations:
             <ul>
               <li> Depth information is crucial for predators, while prey also benefit from depth perception to a lesser extent.
-              <li> Prey require a wide field of view to navigate and detect predators in their periphery, while predators mainly focus on the direction of their movement.
-              <li> Memory complements visual perception in predator-prey interactions.
+              <li> Prey require a wide field of view to navigate while detecting predators in their periphery, whereas predators primarily look in the direction of their movement and thus don't require as wide a FOV.
+              <li> Memory is crucial to visual perception in predator-prey interactions.
             </ul>
 
             These observations support the understanding of why real-world predators prioritize depth perception and prey prioritize a wide field of view in their vision systems.
@@ -1388,31 +1387,37 @@
         <h3 class="title is-4">V-A. Limitations and Future Work</h3>
         <div class="content has-text-justified">
           <p>
-            Despite interesting observations and promising initial results, our approach has several limitations due to the complex nature of real-life predator-prey interactions. Capturing all these complexities in a simple simulated environment like this is nearly impossible. The main limitations and areas for potential future work include:
+            Although the initial results are promising, our approach has several limitations.
+            Real-life predator prey interactions are incredibly complex, and it’s almost impossible to capture all these complexities in a simple simulated environment such as this.
+            The most pertinent limitations and potential future work include:
           </p>
           <ul>
             <li>
-              The predator and prey agents sometimes displayed untrained or random behaviour, suggesting a need for further training. OpenAI's hide and seek environment required approximately 2.7 million episodes for seekers to consistently chase hiders, even with the aid of a curriculum learning approach. Our training lasted only around 10 million steps (approximately \(10^4\) episodes). Although training on OpenAI's scale is not feasible, additional training or alternative strategies like curriculum learning would have likely benefitted the agents greatly.
+              The predator and prey agents sometimes displayed untrained or random behaviour, suggesting a need for further training.
+              For comparison, OpenAI's hide and seek environment required ~2.7 million episodes for seekers to consistently chase hiders, even
+              with the aid of a curriculum learning approach. Our training lasted only around 10 million steps (order of magnitude of
+              ~\(10^4\) episodes). Although training on OpenAI's scale is not feasible, additional training or alternative strategies
+              such as curriculum learning could improve the agents.
             </li>
           </ul>
-
-          <!-- TODO: INSERT VIDEO OF RANDOM BEHAVIOUR HERE-->
 
           <ul>
             <li>
-              Memory is essential for complementing vision in predator-prey scenarios, but our agents lacked memory. They forgot objects as soon as they left their field of view and had no positional information for planning trajectories. To address this, we can increase the observation stack to provide more memory and consider including past positional information. Additionally, using a recurrent neural network instead of a multi-layer perceptron could better capture temporal information.
+               Memory is crucial to complement vision in predator-prey scenarios, however our agents had virtually no memory.
+               This, coupled with the lack of positional information to understand when they were stuck, greatly affected the agents performance.
+               To address these issues, we could increase the observation stack to give the agents
+               more memory, whilst including past positional information as an additional observation. Using a recurrent neural network
+               instead of a vanilla multi-layer perceptron could also better model the temporal information.
             </li>
           </ul>
-
-          <!-- TODO: INSERT VIDEO OF NO MEMORY HERE -->
 
           <ul>
             <li>
               Depth perception seems to play an important role for both predators and prey, but our simplified sensor
               assumes no depth perception outside of the binocular region which isn't strictly true. There are various
               monocular depth cues as well (as shown in the figure below) that both predators and prey in reality could
-              make use of in their periphery. Thus, adding noisy depth estimates rather than no depth information in the
-              monocular regions could help improve learning.
+              make use of in their periphery. Thus, using a more complex sensor as such adding noisy depth estimates rather
+              than no depth information in the monocular regions could help improve learning.
             </li>
           </ul>
 
@@ -1432,7 +1437,11 @@
 
           <ul>
             <li>
-              We simplified the action space for our agents by restricting them to backward/forward movement and rotation. In reality, predators and prey have more degrees of freedom, such as the ability to turn their heads and look in different directions while moving. This additional freedom, combined with memory, could provide advantages for prey with predator vision. They could look backward to assess the predator's location and then look forward again to escape, similar to how humans with predator-style vision might behave when being pursued.
+              We simplified the action space for our agents by restricting them to backward/forward movement and rotation. In reality,
+              predators and prey have more degrees of freedom, such as the ability to turn their heads and look in different directions
+              while moving. This additional freedom, combined with memory, could for example provide advantages for prey with predator vision. They
+              could look backward to assess the predator's location and then look forward again to escape, similar to how humans (who have
+              predator-style vision) might behave when being chased.
             </li>
           </ul>
 
