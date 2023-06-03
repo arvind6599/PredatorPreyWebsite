@@ -849,7 +849,7 @@
                 </div>
 
                 <p>
-                  As depicted in the figure above, we train agents in 4 configurations to cover each combination of
+                  As depicted in the figure above, we train agents in \(4\) configurations to cover each combination of
                   vision types for the predator and prey. The trained models are then used to perform inferences.
                 </p>
 
@@ -965,7 +965,7 @@
             <h3 class="title is-5">Hardware</h3>
             <p>
               The models were trained using a CUDA-enabled NVIDIA
-              V100 PCIe 32 GB GPU with 7TFLOPS, a Xeon-Gold processor running with a 2.1 GHz clock speed, and 16GB of
+              V100 PCIe \(32\) GB GPU with \(7\) TFLOPS, a Xeon-Gold processor running with a \(2.1\) GHz clock speed, and \(16\) GB of
               RAM. Our method is implemented with Unity’s ML-Agents package and PyTorch, running on Linux with Python 3.7.
             </p>
 
@@ -998,8 +998,8 @@
                       <h5 class="subtitle has-text-centered">
                         <font size="-0.7">
                           <span style="font-weight:normal">
-                            (Left) Average returns over \(9\) million steps of training for each agent configuration.
-                            (Right) Average episode lengths over \(9\) million steps of training for each agent configuration.
+                            <b>(Left)</b> Average returns over \(9\) million steps of training for each agent configuration.
+                            <b>(Right)</b> Average episode lengths over \(9\) million steps of training for each agent configuration.
                             Note that, unfortunately, the training logs for 'Normal' vision were lost. However the trend in rewards
                             was similar to the other plots shown here. Furthermore, take note that the x-axis represents the number of steps,
                             so if the predator was trained first, it would swap at the step \(300000\), and the x-label for the prey at total step \(300005\)
@@ -1394,8 +1394,8 @@
           <ul>
             <li>
               The predator and prey agents sometimes displayed untrained or random behaviour, suggesting a need for further training.
-              For comparison, OpenAI's hide and seek environment required ~2.7 million episodes for seekers to consistently chase hiders, even
-              with the aid of a curriculum learning approach. Our training lasted only around 10 million steps (order of magnitude of
+              For comparison, OpenAI's hide and seek environment required ~\(2.7\) million episodes for seekers to consistently chase hiders, even
+              with the aid of a curriculum learning approach. Our training lasted only around \(10\) million steps (order of magnitude of
               ~\(10^4\) episodes). Although training on OpenAI's scale is not feasible, additional training or alternative strategies
               such as curriculum learning could improve the agents.
             </li>
